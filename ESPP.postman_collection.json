@@ -281,6 +281,51 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "getRuleInfo-reqStatus211 Copy 4",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"getRuleInfo-5\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://autopay-test.rt.ru:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"autopay-test",
+										"rt",
+										"ru"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
