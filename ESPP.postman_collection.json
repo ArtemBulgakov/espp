@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "dc61e6ce-b1a5-4c0f-a0f0-0947b0e75d54",
+		"_postman_id": "fa46c09a-cbf2-40f6-af2e-e2fa4102c37e",
 		"name": "ESPP",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "12346365"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -349,7 +348,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"reqType\": \"getRunfo-6(223)\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
+									"raw": "{\r\n    \"reqType\": \"getRunfo-6(3)\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
