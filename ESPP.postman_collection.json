@@ -102,7 +102,7 @@
 							"response": []
 						},
 						{
-							"name": "getRuleInfo-reqStatus211",
+							"name": "getCardInfo",
 							"protocolProfileBehavior": {
 								"disabledSystemHeaders": {
 									"accept": true,
@@ -123,7 +123,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
+									"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -147,7 +147,7 @@
 							"response": []
 						},
 						{
-							"name": "getRuleInfo-reqStatus211 Copy",
+							"name": "switchPayCard",
 							"protocolProfileBehavior": {
 								"disabledSystemHeaders": {
 									"accept": true,
@@ -168,7 +168,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"reqType\": \"getRuleInfo-2\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
+									"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -192,7 +192,7 @@
 							"response": []
 						},
 						{
-							"name": "getRuleInfo-reqStatus211 Copy 2",
+							"name": "smsNum",
 							"protocolProfileBehavior": {
 								"disabledSystemHeaders": {
 									"accept": true,
@@ -213,7 +213,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"reqType\": \"getRuleInfo-3\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
+									"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1078270\",\r\n    \"phoneNum\": \"9111111111\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -237,7 +237,7 @@
 							"response": []
 						},
 						{
-							"name": "getRuleInfo-reqStatus211 Copy 3",
+							"name": "createRule",
 							"protocolProfileBehavior": {
 								"disabledSystemHeaders": {
 									"accept": true,
@@ -258,7 +258,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"reqType\": \"getRuleInfo-4\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
+									"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1078270\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -348,7 +348,52 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"reqType\": \"getRunfo-6(3)\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
+									"raw": "{\r\n    \"reqType\": \"getRunfo-6(3232)\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://autopay-test.rt.ru:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"autopay-test",
+										"rt",
+										"ru"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRuleInfo-reqStatus211 Copy 6",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"getRunfo-6(3265465464532)\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"00000\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
