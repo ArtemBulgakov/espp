@@ -5002,7 +5002,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}} \r\n  \r\n}",
+													"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}} \r\n  \r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -5394,6 +5394,16 @@
 		{
 			"key": "randomNum",
 			"value": ""
+		},
+		{
+			"key": "esppCardId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "reqId",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
