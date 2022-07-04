@@ -377,6 +377,192 @@
 					"name": "2638-кроссдоступ",
 					"item": [
 						{
+							"name": "Добавление карты",
+							"item": [
+								{
+									"name": "regCard",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"reqId\", jsonData.reqId);\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"regCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "confirmRegister",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.collectionVariables.set (\"randomNum\", _.random (100000,100000000));"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"confirmRegister\",\r\n    \"reqId\": {{reqId}},\r\n    \"reqTime\": \"2022-06-14T12:57:18.011+00:00\",\r\n    \"reqStatus\": 0,\r\n    \"registerStatus\": 2,\r\n    \"cardId\": {{randomNum}},\r\n    \"reqNote\": \"success\",\r\n    \"reqUserMsg\": \"Карта успешно привязана\",\r\n    \"cardInfo\": {\r\n        \"cardType\": \"VISA\",\r\n        \"cardNum\": \"40000000*******2487\",\r\n        \"bankName\": \"PJSC TestBank\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdbk",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdbk"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getCardsList",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"console.log(jsonData);\r",
+													"postman.setEnvironmentVariable(\"esppCardId\", jsonData.cards[0].esppCardId);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
 							"name": "getCardInfo",
 							"item": [
 								{
@@ -401,7 +587,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -446,7 +632,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -491,7 +677,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -536,7 +722,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -581,7 +767,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -626,7 +812,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -671,7 +857,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -716,7 +902,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -761,7 +947,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -811,7 +997,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -856,7 +1042,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -901,7 +1087,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -946,7 +1132,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -991,7 +1177,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1126,7 +1312,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1171,7 +1357,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1221,7 +1407,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1266,7 +1452,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"phoneNum\":\"9111111111\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"phoneNum\":\"9111111111\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1311,7 +1497,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"phoneNum\":\"9111111111\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1356,7 +1542,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1095231\",\r\n    \"phoneNum\":\"9111111111\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1401,7 +1587,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1095231\",\r\n    \"phoneNum\":\"9111111112\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1446,7 +1632,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1491,7 +1677,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"phoneNum\":\"9111111112\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"phoneNum\":\"9111111112\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1536,7 +1722,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1095231\",\r\n    \"phoneNum\":\"9111111112\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1581,7 +1767,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1095231\",\r\n    \"phoneNum\":\"9111111112\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1631,7 +1817,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1676,7 +1862,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1721,7 +1907,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1778,7 +1964,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1823,7 +2009,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1868,7 +2054,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1913,7 +2099,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1958,7 +2144,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999600\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1989,7 +2175,7 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"krRuleId\", jsonData.krRuleId);"
+													"postman.setEnvironmentVariable(\"RuleId\", jsonData.RuleId);"
 												],
 												"type": "text/javascript"
 											}
@@ -2015,7 +2201,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_8\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2044,7 +2230,7 @@
 							"name": "getRuleInfo",
 							"item": [
 								{
-									"name": "getRuleInfo-уд.правило(reqSttus = 111)",
+									"name": "getRuleInfo-уд.правило(reqSttus = 211)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -2065,7 +2251,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": {{delRule}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": {{delRule}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2089,7 +2275,7 @@
 									"response": []
 								},
 								{
-									"name": "getRuleInfo-несущ. правило(reqStatus=111)",
+									"name": "getRuleInfo-несущ. правило(reqStatus=211)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -2110,7 +2296,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": \"{{ficRule}}\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": \"{{ficRule}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2134,7 +2320,7 @@
 									"response": []
 								},
 								{
-									"name": "getRuleInfo-др. УЗ (reqStatus=112)",
+									"name": "getRuleInfo-др. УЗ (reqStatus=212)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -2200,7 +2386,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2224,7 +2410,7 @@
 									"response": []
 								},
 								{
-									"name": "getRuleInfo-кр-п. (reqSttus = 113)",
+									"name": "getRuleInfo-кр-п. (reqSttus = 213)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -2245,7 +2431,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2269,7 +2455,7 @@
 									"response": []
 								},
 								{
-									"name": "getRuleInfo-кр-п.уд.правило(reqSttus = 111)",
+									"name": "getRuleInfo-кр-п.уд.правило(reqSttus = 211)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -2290,7 +2476,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\":{{delRule}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\":{{delRule}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2314,7 +2500,7 @@
 									"response": []
 								},
 								{
-									"name": "getRuleInfo-кр-п. несущ. правило(reqStatus=111)",
+									"name": "getRuleInfo-кр-п. несущ. правило(reqStatus=211)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -2335,7 +2521,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\":\"{{ficRule}}\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\":\"{{ficRule}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2359,7 +2545,7 @@
 									"response": []
 								},
 								{
-									"name": "getRuleInfo-кр-п. др. УЗ (reqStatus=112)",
+									"name": "getRuleInfo-кр-п. др. УЗ (reqStatus=212)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -2380,7 +2566,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"ruleId\": {{krRuleId}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"ruleId\": {{RuleId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2425,7 +2611,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"ruleId\": {{krRuleId}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": {{RuleId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2478,7 +2664,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2523,7 +2709,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2568,7 +2754,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2613,7 +2799,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2658,7 +2844,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2703,7 +2889,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2748,7 +2934,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2793,7 +2979,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2838,7 +3024,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2888,7 +3074,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2933,7 +3119,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2978,7 +3164,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": \"1075755\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -3023,7 +3209,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -3068,7 +3254,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -3113,7 +3299,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -3158,7 +3344,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -3203,7 +3389,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -3248,7 +3434,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -3300,7 +3486,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3345,7 +3531,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3435,7 +3621,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3480,7 +3666,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3525,7 +3711,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3570,7 +3756,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3615,7 +3801,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3660,7 +3846,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3710,7 +3896,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3755,7 +3941,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3845,7 +4031,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3890,7 +4076,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3935,7 +4121,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -3980,7 +4166,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4025,7 +4211,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4070,7 +4256,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4120,7 +4306,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4165,7 +4351,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4210,7 +4396,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4255,7 +4441,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4300,7 +4486,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4345,7 +4531,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4390,7 +4576,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4435,7 +4621,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4480,7 +4666,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4530,7 +4716,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4575,7 +4761,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4620,7 +4806,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4665,7 +4851,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1076833\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4715,7 +4901,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4760,7 +4946,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4805,52 +4991,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1095591\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteCard-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1095591\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4895,7 +5036,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1095231\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4985,7 +5126,52 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteCard-reaStatus=0",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -5030,7 +5216,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": \"1095231\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -5075,7 +5261,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1095231\"\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -5225,7 +5411,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5427,6 +5613,51 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "deleteCard",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true,
+							"accept-encoding": true,
+							"connection": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"1096792\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://autopay-test.rt.ru:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"autopay-test",
+								"rt",
+								"ru"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
@@ -5472,6 +5703,12 @@
 			"type": "string"
 		},
 		{
+			"key": "krEsppCardId",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
 			"key": "ruleId",
 			"value": "",
 			"type": "string"
@@ -5479,7 +5716,8 @@
 		{
 			"key": "krRuleId",
 			"value": "",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "reqId",
