@@ -7225,7 +7225,74 @@
 					"name": "vpi2",
 					"item": [
 						{
-							"name": "createPayment 5.2",
+							"name": "createPayment 5.1",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set (\"randomNum\", _.random (10000000000,100000000000000));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"disabledSystemHeaders": {
+									"accept-encoding": true,
+									"connection": true,
+									"content-type": true,
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Charset",
+										"value": "UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"srcSystemId\": \"3213215354\",\r\n    \"srcPayId\": {{randomNum}},\r\n    \"currency\": \"RUB\",\r\n    \"srcTime\": \"2021-11-22T12:27:26.795+05:00\",\r\n    \"items\": [\r\n        {\r\n            \"svcTypeId\": \"0\",\r\n            \"svcNum\": \"199999999998\",\r\n            \"amount\": 111\r\n        }\r\n    ],\r\n    \"payMethod\": \"BankCard\",\r\n    \"regCard\": 1,\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUN\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"resultPage\": 1,\r\n    \"urlReturn\": \"/test/vpi2_test.jsp\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://paycard-test.rt.ru:8443/vpi2/createPayment",
+									"protocol": "https",
+									"host": [
+										"paycard-test",
+										"rt",
+										"ru"
+									],
+									"port": "8443",
+									"path": [
+										"vpi2",
+										"createPayment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "m2m createPayment 5.2",
 							"event": [
 								{
 									"listen": "prerequest",
