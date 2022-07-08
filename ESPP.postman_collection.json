@@ -6026,12 +6026,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://autopay-test.rt.ru:8443/sdp",
+							"raw": "https://{{autopay-test}}:8443/sdp",
 							"protocol": "https",
 							"host": [
-								"autopay-test",
-								"rt",
-								"ru"
+								"{{autopay-test}}"
 							],
 							"port": "8443",
 							"path": [
