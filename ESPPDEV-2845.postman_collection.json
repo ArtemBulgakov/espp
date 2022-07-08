@@ -556,7 +556,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"ERROR\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"svcNums\":[{\r\n    \"svcTypeId\":\"ERROR\",\r\n    \"svcNum\":\"199999999601\"}]\r\n           \r\n}",
+									"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"svcNums\":[{\r\n    \"svcTypeId\":\"ERROR\",\r\n    \"svcNum\":\"199999999601\"}]\r\n           \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1086,6 +1086,51 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUN\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://autopay-test.rt.ru:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"autopay-test",
+										"rt",
+										"ru"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkRuleParams",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"checkRuleParams\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"SDPPAID\"\r\n    },\r\n    \"svcTypeId\": \"ERROR\",\r\n    \"svcNum\": \"199999999999\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
