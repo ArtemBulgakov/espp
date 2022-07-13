@@ -286,7 +286,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"ERROR\",\r\n    \"svcNum\": \"199999999999\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+									"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"ERROR\",\r\n    \"svcNum\": \"199999999999\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"SDPPAID\"\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
