@@ -1,0 +1,2395 @@
+{
+	"info": {
+		"_postman_id": "03e610cc-4736-458a-8ed0-85f04030bb66",
+		"name": "regression",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12346365"
+	},
+	"item": [
+		{
+			"name": "pa-espp",
+			"item": [
+				{
+					"name": "json",
+					"item": [
+						{
+							"name": "uni",
+							"item": [
+								{
+									"name": "queryPayeeInfo",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"clientType=PERSON\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.clientType).to.eql(\"PERSON\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json;charset=UTF-8",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept-Charset",
+												"value": "UTF-8",
+												"type": "text"
+											},
+											{
+												"key": "Host",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"queryPayeeInfo\",\r\n    \"svcTypeId\": \"{{pa_svcTypeId}}\",\r\n    \"queryFlags\": 0,\r\n    \"svcNum\": \"{{pa_svcNum}}\",\r\n    \"agentAccount\": \"1440\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "checkPaymentParams",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"clientType=PERSON\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.clientType).to.eql(\"PERSON\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json;charset=UTF-8",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept-Charset",
+												"value": "UTF-8",
+												"type": "text"
+											},
+											{
+												"key": "Host",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"checkPaymentParams\",\r\n    \"svcTypeId\": \"{{pa_svcTypeId}}\",\r\n    \"svcNum\": \"{{pa_svcNum}}\",\r\n    \"payCurrId\": \"RUR\",\r\n    \"payAmount\": 1000,\r\n    \"agentAccount\": \"1440\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createPayment",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"payStatus=2\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.payStatus).to.eql(2);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqType=createPayment\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqType).to.eql(\"createPayment\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"srcPayId from request body\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.srcPayId).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"esppPayId returned\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.esppPayId.have);\r",
+													"    pm.collectionVariables.set(\"esppPayId\", jsonData.esppPayId);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqTime.have);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"check dupFlag\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    if(jsonData.dupFlag)\r",
+													"    {\r",
+													"        pm.expect.fail(\"dupFlag в запросе\")\r",
+													"    }\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.collectionVariables.set(\"srcPayId\", \"autotest_\" + getRandomInt(1000000000));\r",
+													"\r",
+													"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDateToJSON());\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"function getRandomInt(max) {\r",
+													"  return Math.floor(Math.random() * max);\r",
+													"}\r",
+													"\r",
+													"function getFormattedDateToJSON()\r",
+													"{\r",
+													"    d = new Date();\r",
+													"    tz = \"+05:00\";\r",
+													"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+													"    return res;\r",
+													"}\r",
+													"\r",
+													"function twodigits(par)\r",
+													"{\r",
+													"    if(par.length > 1)\r",
+													"    {\r",
+													"        return par;\r",
+													"    }\r",
+													"    else\r",
+													"    {\r",
+													"        return \"0\" + par;\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"createPayment\",\r\n    \"svcTypeId\": \"{{pa_svcTypeId}}\",\r\n    \"svcNum\": \"{{pa_svcNum}}\",\r\n    \"payCurrId\": \"RUR\",\r\n    \"payAmount\": 1000,\r\n    \"agentAccount\": \"1440\",\r\n    \"srcPayId\": \"{{srcPayId}}\",\r\n    \"payTime\": \"{{currentTimeJSON}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"registerCheck\": \"1\",\r\n    \"payerContact\": \"test@rt.ru\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "abandonPayment",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"payStatus=3\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.payStatus).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqType=abandonPayment\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqType).to.eql(\"abandonPayment\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"srcPayId from request body\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.srcPayId).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqTime.have);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"check dupFlag\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    if(jsonData.dupFlag)\r",
+													"    {\r",
+													"        pm.expect.fail(\"dupFlag в запросе\")\r",
+													"    }\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDate());\r",
+													"\r",
+													"function getRandomInt(max) {\r",
+													"  return Math.floor(Math.random() * max);\r",
+													"}\r",
+													"\r",
+													"function getFormattedDate()\r",
+													"{\r",
+													"    d = new Date();\r",
+													"    tz = \"+05:00\";\r",
+													"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+													"    return res;\r",
+													"}\r",
+													"\r",
+													"function twodigits(par)\r",
+													"{\r",
+													"    if(par.length > 1)\r",
+													"    {\r",
+													"        return par;\r",
+													"    }\r",
+													"    else\r",
+													"    {\r",
+													"        return \"0\" + par;\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"abandonPayment\",\r\n    \"agentAccount\": \"1440\",\r\n    \"srcPayId\": \"{{srcPayId}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "uni-new",
+							"item": [
+								{
+									"name": "queryPayeeInfo",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"clientType=PERSON\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.clientType).to.eql(\"PERSON\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"queryPayeeInfo\",\r\n    \"svcTypeId\": \"{{pa_svcTypeId}}\",\r\n    \"queryFlags\": 0,\r\n    \"svcNum\": \"{{pa_svcNum}}\",\r\n    \"svcSubNum\": \"0\",\r\n    \"agentId\": \"1440\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni-new",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni-new"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "checkPaymentParams",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"clientType=PERSON\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.clientType).to.eql(\"PERSON\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"checkPaymentParams\",\r\n    \"svcTypeId\": \"{{pa_svcTypeId}}\",\r\n    \"svcNum\": \"{{pa_svcNum}}\",\r\n    \"payCurrId\": \"RUR\",\r\n    \"payAmount\": 1000,\r\n    \"agentId\": \"1440\",\r\n    \"agentAccount\": \"OLDER\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni-new",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni-new"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createPayment",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"payStatus=2\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.payStatus).to.eql(2);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqType=createPayment\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqType).to.eql(\"createPayment\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"srcPayId from request body\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.srcPayId).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"esppPayId returned\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.esppPayId.have);\r",
+													"    pm.collectionVariables.set(\"esppPayId\", jsonData.esppPayId);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqTime.have);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"check dupFlag\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    if(jsonData.dupFlag)\r",
+													"    {\r",
+													"        pm.expect.fail(\"dupFlag в запросе\")\r",
+													"    }\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.collectionVariables.set(\"srcPayId\", \"autotest_\" + getRandomInt(1000000000));\r",
+													"\r",
+													"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDateToJSON());\r",
+													"\r",
+													"\r",
+													"function getRandomInt(max) {\r",
+													"  return Math.floor(Math.random() * max);\r",
+													"}\r",
+													"\r",
+													"function getFormattedDateToJSON()\r",
+													"{\r",
+													"    d = new Date();\r",
+													"    tz = \"+05:00\";\r",
+													"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+													"    return res;\r",
+													"}\r",
+													"\r",
+													"function twodigits(par)\r",
+													"{\r",
+													"    if(par.length > 1)\r",
+													"    {\r",
+													"        return par;\r",
+													"    }\r",
+													"    else\r",
+													"    {\r",
+													"        return \"0\" + par;\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"createPayment\",\r\n    \"svcTypeId\": \"{{pa_svcTypeId}}\",\r\n    \"svcNum\": \"{{pa_svcNum}}\",\r\n    \"payCurrId\": \"RUR\",\r\n    \"payAmount\": 1000,\r\n    \"agentId\": \"1440\",\r\n    \"agentAccount\": \"OLDER\",\r\n    \"srcPayId\": \"{{srcPayId}}\",\r\n    \"payTime\": \"{{currentTimeJSON}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"registerCheck\": \"1\",\r\n    \"payerContact\": \"test@rt.ru\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni-new",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni-new"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "abandonPayment",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"payStatus=3\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.payStatus).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqType=abandonPayment\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqType).to.eql(\"abandonPayment\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"srcPayId from request body\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.srcPayId).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqTime.have);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"check dupFlag\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    if(jsonData.dupFlag)\r",
+													"    {\r",
+													"        pm.expect.fail(\"dupFlag в запросе\")\r",
+													"    }\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"\r",
+													"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDate());\r",
+													"\r",
+													"function getRandomInt(max) {\r",
+													"  return Math.floor(Math.random() * max);\r",
+													"}\r",
+													"\r",
+													"function getFormattedDate()\r",
+													"{\r",
+													"    d = new Date();\r",
+													"    tz = \"+05:00\";\r",
+													"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+													"    return res;\r",
+													"}\r",
+													"\r",
+													"function twodigits(par)\r",
+													"{\r",
+													"    if(par.length > 1)\r",
+													"    {\r",
+													"        return par;\r",
+													"    }\r",
+													"    else\r",
+													"    {\r",
+													"        return \"0\" + par;\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"abandonPayment\",\r\n    \"agentId\": \"1440\",\r\n    \"srcPayId\": \"{{srcPayId}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni-new",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni-new"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "urlencoded",
+					"item": [
+						{
+							"name": "uni",
+							"item": [
+								{
+									"name": "queryPayeeInfo urlencoded",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqStatus\")).to.eql('0');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"clientType=PERSON\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"clientType\")).to.eql(\"PERSON\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"/*\r",
+													"Функция вытягивает значение параметра paramName из ответа. \r",
+													"Если параметр не найден то тест отмечается проваленным.\r",
+													"Сравнивать результат нужно со строкой.\r",
+													"*/\r",
+													"\r",
+													"function getResponseParamValue(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return currentParam[1];\r",
+													"    }\r",
+													"  }\r",
+													"  pm.expect.fail(\"Параметр \" + paramName + \" не найден в ответе\")\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "{{espp_base_url}}:8443",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "reqType",
+													"value": "queryPayeeInfo",
+													"type": "text"
+												},
+												{
+													"key": "svcTypeId",
+													"value": "{{pa_svcTypeId}}",
+													"type": "text"
+												},
+												{
+													"key": "svcNum",
+													"value": "{{pa_svcNum}}",
+													"type": "text"
+												},
+												{
+													"key": "queryFlags",
+													"value": "0",
+													"type": "text"
+												},
+												{
+													"key": "agentAccount",
+													"value": "1440",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "checkPaymentParams urlencoded",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqStatus\")).to.eql('0');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"clientType=PERSON\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"clientType\")).to.eql(\"PERSON\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(), \"reqTime\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"/*\r",
+													"Функция вытягивает значение параметра paramName из ответа. \r",
+													"Если параметр не найден то тест отмечается проваленным.\r",
+													"Сравнивать результат нужно со строкой.\r",
+													"*/\r",
+													"\r",
+													"function getResponseParamValue(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return currentParam[1];\r",
+													"    }\r",
+													"  }\r",
+													"  pm.expect.fail(\"Параметр \" + paramName + \" не найден в ответе\")\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded;charset=UTF-8",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "Accept-Charset",
+												"value": "UTF-8",
+												"type": "text"
+											},
+											{
+												"key": "Host",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "reqType",
+													"value": "checkPaymentParams",
+													"type": "text"
+												},
+												{
+													"key": "svcTypeId",
+													"value": "{{pa_svcTypeId}}",
+													"type": "text"
+												},
+												{
+													"key": "svcNum",
+													"value": "{{pa_svcNum}}",
+													"type": "text"
+												},
+												{
+													"key": "agentAccount",
+													"value": "1440",
+													"type": "text"
+												},
+												{
+													"key": "payAmount",
+													"value": "1000",
+													"type": "text"
+												},
+												{
+													"key": "payCurrId",
+													"value": "RUR",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createPayment urlencoded",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqStatus\")).to.eql('0');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"payStatus=2\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"payStatus\")).to.eql('2');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqType=createPayment\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqType\")).to.eql('createPayment');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"srcPayId from request body\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"srcPayId\")).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"esppPayId returned\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(), \"esppPayId\"));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(), \"reqTime\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"/*\r",
+													"Функция вытягивает значение параметра paramName из ответа. \r",
+													"Если параметр не найден то тест отмечается проваленным.\r",
+													"Сравнивать результат нужно со строкой.\r",
+													"*/\r",
+													"\r",
+													"function getResponseParamValue(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return currentParam[1];\r",
+													"    }\r",
+													"  }\r",
+													"  pm.expect.fail(\"Параметр \" + paramName + \" не найден в ответе\")\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"\r",
+													"pm.collectionVariables.set(\"srcPayId\", \"autotest_\" + getRandomInt(1000000000));\r",
+													"\r",
+													"pm.collectionVariables.set(\"currentTimeURLencoded\", getFormattedDateToURLencoded());\r",
+													"\r",
+													"\r",
+													"\r",
+													"function getRandomInt(max) {\r",
+													"  return Math.floor(Math.random() * max);\r",
+													"}\r",
+													"\r",
+													"function getFormattedDateToURLencoded()\r",
+													"{\r",
+													"    d = new Date();\r",
+													"    tz = \"+05:00\";\r",
+													"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+													"    return encodeURI(res);\r",
+													"}\r",
+													"\r",
+													"function twodigits(par)\r",
+													"{\r",
+													"    if(par.length > 1)\r",
+													"    {\r",
+													"        return par;\r",
+													"    }\r",
+													"    else\r",
+													"    {\r",
+													"        return \"0\" + par;\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "reqType",
+													"value": "createPayment",
+													"type": "text"
+												},
+												{
+													"key": "svcTypeId",
+													"value": "{{pa_svcTypeId}}",
+													"type": "text"
+												},
+												{
+													"key": "svcNum",
+													"value": "{{pa_svcNum}}",
+													"type": "text"
+												},
+												{
+													"key": "agentAccount",
+													"value": "1440",
+													"type": "text"
+												},
+												{
+													"key": "payAmount",
+													"value": "1000",
+													"type": "text"
+												},
+												{
+													"key": "payCurrId",
+													"value": "RUR",
+													"type": "text"
+												},
+												{
+													"key": "srcPayId",
+													"value": "{{srcPayId}}",
+													"type": "text"
+												},
+												{
+													"key": "payTime",
+													"value": "{{currentTimeURLencoded}}",
+													"type": "text"
+												},
+												{
+													"key": "reqTime",
+													"value": "{{currentTimeURLencoded}}",
+													"type": "text"
+												},
+												{
+													"key": "registerCheck",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "payerContact",
+													"value": "test@rt.ru",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "abandonPayment urlencoded",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqStatus\")).to.eql('0');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"payStatus=3\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"payStatus\")).to.eql('3');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqType=abandonPayment\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqType\")).to.eql('abandonPayment');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"srcPayId from request body\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"srcPayId\")).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(), \"reqTime\"));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"check dupFlag\", function () {\r",
+													"    if(isParamExists(pm.response.text(),\"dupFlag\"))\r",
+													"    {\r",
+													"        pm.expect.fail(\"dupFlag в запросе\");\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"/*\r",
+													"Функция вытягивает значение параметра paramName из ответа. \r",
+													"Если параметр не найден то тест отмечается проваленным.\r",
+													"Сравнивать результат нужно со строкой.\r",
+													"*/\r",
+													"\r",
+													"function getResponseParamValue(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return currentParam[1];\r",
+													"    }\r",
+													"  }\r",
+													"  pm.expect.fail(\"Параметр \" + paramName + \" не найден в ответе\")\r",
+													"}\r",
+													"\r",
+													"/*\r",
+													"Функция возвращает true если параметр в body присутствует. Иначе false. \r",
+													"*/\r",
+													"\r",
+													"function isParamExists(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return true;\r",
+													"    }\r",
+													"  }\r",
+													"  return false;\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.collectionVariables.set(\"currentTimeURLencoded\", getFormattedDateToURLencoded());\r",
+													"\r",
+													"\r",
+													"function getRandomInt(max) {\r",
+													"  return Math.floor(Math.random() * max);\r",
+													"}\r",
+													"\r",
+													"function getFormattedDateToURLencoded()\r",
+													"{\r",
+													"    d = new Date();\r",
+													"    tz = \"+05:00\";\r",
+													"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+													"    return encodeURI(res);\r",
+													"}\r",
+													"\r",
+													"function twodigits(par)\r",
+													"{\r",
+													"    if(par.length > 1)\r",
+													"    {\r",
+													"        return par;\r",
+													"    }\r",
+													"    else\r",
+													"    {\r",
+													"        return \"0\" + par;\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "agentAccount",
+													"value": "1440",
+													"type": "text"
+												},
+												{
+													"key": "srcPayId",
+													"value": "{{srcPayId}}",
+													"type": "text"
+												},
+												{
+													"key": "reqTime",
+													"value": "{{currentTimeURLencoded}}",
+													"type": "text"
+												},
+												{
+													"key": "reqType",
+													"value": "abandonPayment",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "uni-new",
+							"item": [
+								{
+									"name": "queryPayeeInfo urlencoded",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqStatus\")).to.eql('0');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"clientType=PERSON\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"clientType\")).to.eql(\"PERSON\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"/*\r",
+													"Функция вытягивает значение параметра paramName из ответа. \r",
+													"Если параметр не найден то тест отмечается проваленным.\r",
+													"Сравнивать результат нужно со строкой.\r",
+													"*/\r",
+													"\r",
+													"function getResponseParamValue(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return currentParam[1];\r",
+													"    }\r",
+													"  }\r",
+													"  pm.expect.fail(\"Параметр \" + paramName + \" не найден в ответе\")\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "{{espp_base_url}}:8443",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "reqType",
+													"value": "queryPayeeInfo",
+													"type": "text"
+												},
+												{
+													"key": "svcTypeId",
+													"value": "{{pa_svcTypeId}}",
+													"type": "text"
+												},
+												{
+													"key": "svcNum",
+													"value": "{{pa_svcNum}}",
+													"type": "text"
+												},
+												{
+													"key": "queryFlags",
+													"value": "0",
+													"type": "text"
+												},
+												{
+													"key": "agentId",
+													"value": "1440",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni-new",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni-new"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "checkPaymentParams urlencoded",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqStatus\")).to.eql('0');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"clientType=PERSON\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"clientType\")).to.eql(\"PERSON\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(), \"reqTime\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"/*\r",
+													"Функция вытягивает значение параметра paramName из ответа. \r",
+													"Если параметр не найден то тест отмечается проваленным.\r",
+													"Сравнивать результат нужно со строкой.\r",
+													"*/\r",
+													"\r",
+													"function getResponseParamValue(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return currentParam[1];\r",
+													"    }\r",
+													"  }\r",
+													"  pm.expect.fail(\"Параметр \" + paramName + \" не найден в ответе\")\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payAmount",
+													"value": "1000",
+													"type": "text"
+												},
+												{
+													"key": "reqType",
+													"value": "checkPaymentParams",
+													"type": "text"
+												},
+												{
+													"key": "svcTypeId",
+													"value": "{{pa_svcTypeId}}",
+													"type": "text"
+												},
+												{
+													"key": "svcNum",
+													"value": "{{pa_svcNum}}",
+													"type": "text"
+												},
+												{
+													"key": "payCurrId",
+													"value": "RUR",
+													"type": "text"
+												},
+												{
+													"key": "agentId",
+													"value": "1440",
+													"type": "text"
+												},
+												{
+													"key": "agentAccount",
+													"value": "OLDER",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni-new",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni-new"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createPayment urlencoded",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqStatus\")).to.eql('0');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"payStatus=2\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"payStatus\")).to.eql('2');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqType=createPayment\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqType\")).to.eql('createPayment');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"srcPayId from request body\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"srcPayId\")).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"esppPayId returned\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(), \"esppPayId\"));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(), \"reqTime\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"/*\r",
+													"Функция вытягивает значение параметра paramName из ответа. \r",
+													"Если параметр не найден то тест отмечается проваленным.\r",
+													"Сравнивать результат нужно со строкой.\r",
+													"*/\r",
+													"\r",
+													"function getResponseParamValue(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return currentParam[1];\r",
+													"    }\r",
+													"  }\r",
+													"  pm.expect.fail(\"Параметр \" + paramName + \" не найден в ответе\")\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"\r",
+													"pm.collectionVariables.set(\"srcPayId\", \"autotest_\" + getRandomInt(1000000000));\r",
+													"\r",
+													"pm.collectionVariables.set(\"currentTimeURLencoded\", getFormattedDateToURLencoded());\r",
+													"\r",
+													"\r",
+													"\r",
+													"function getRandomInt(max) {\r",
+													"  return Math.floor(Math.random() * max);\r",
+													"}\r",
+													"\r",
+													"function getFormattedDateToURLencoded()\r",
+													"{\r",
+													"    d = new Date();\r",
+													"    tz = \"+05:00\";\r",
+													"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+													"    return encodeURI(res);\r",
+													"}\r",
+													"\r",
+													"function twodigits(par)\r",
+													"{\r",
+													"    if(par.length > 1)\r",
+													"    {\r",
+													"        return par;\r",
+													"    }\r",
+													"    else\r",
+													"    {\r",
+													"        return \"0\" + par;\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "reqType",
+													"value": "createPayment",
+													"type": "text"
+												},
+												{
+													"key": "svcTypeId",
+													"value": "{{pa_svcTypeId}}",
+													"type": "text"
+												},
+												{
+													"key": "svcNum",
+													"value": "{{pa_svcNum}}",
+													"type": "text"
+												},
+												{
+													"key": "agentId",
+													"value": "1440",
+													"type": "text"
+												},
+												{
+													"key": "agentAccount",
+													"value": "OLDER",
+													"type": "text"
+												},
+												{
+													"key": "payAmount",
+													"value": "1000",
+													"type": "text"
+												},
+												{
+													"key": "payCurrId",
+													"value": "RUR",
+													"type": "text"
+												},
+												{
+													"key": "srcPayId",
+													"value": "{{srcPayId}}",
+													"type": "text"
+												},
+												{
+													"key": "payTime",
+													"value": "{{currentTimeURLencoded}}",
+													"type": "text"
+												},
+												{
+													"key": "reqTime",
+													"value": "{{currentTimeURLencoded}}",
+													"type": "text"
+												},
+												{
+													"key": "registerCheck",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "payerContact",
+													"value": "test@rt.ru",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni-new",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni-new"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "abandonPayment urlencoded",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqStatus\")).to.eql('0');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"payStatus=3\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"payStatus\")).to.eql('3');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqType=abandonPayment\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"reqType\")).to.eql('abandonPayment');  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"srcPayId from request body\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(),\"srcPayId\")).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"reqTime returned\", function () {\r",
+													"    pm.expect(getResponseParamValue(pm.response.text(), \"reqTime\"));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"check dupFlag\", function () {\r",
+													"    if(isParamExists(pm.response.text(),\"dupFlag\"))\r",
+													"    {\r",
+													"        pm.expect.fail(\"dupFlag в запросе\");\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"/*\r",
+													"Функция вытягивает значение параметра paramName из ответа. \r",
+													"Если параметр не найден то тест отмечается проваленным.\r",
+													"Сравнивать результат нужно со строкой.\r",
+													"*/\r",
+													"\r",
+													"function getResponseParamValue(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return currentParam[1];\r",
+													"    }\r",
+													"  }\r",
+													"  pm.expect.fail(\"Параметр \" + paramName + \" не найден в ответе\")\r",
+													"}\r",
+													"\r",
+													"/*\r",
+													"Функция возвращает true если параметр в body присутствует. Иначе false. \r",
+													"*/\r",
+													"\r",
+													"function isParamExists(body, paramName)\r",
+													"{\r",
+													"  tmp = body.split(\"&\");\r",
+													"  for(i=0; i<tmp.length; i++)\r",
+													"  {\r",
+													"    currentParam = tmp[i].split(\"=\");\r",
+													"    if(currentParam[0].match(paramName))\r",
+													"    {\r",
+													"      return true;\r",
+													"    }\r",
+													"  }\r",
+													"  return false;\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.collectionVariables.set(\"currentTimeURLencoded\", getFormattedDateToURLencoded());\r",
+													"\r",
+													"\r",
+													"function getRandomInt(max) {\r",
+													"  return Math.floor(Math.random() * max);\r",
+													"}\r",
+													"\r",
+													"function getFormattedDateToURLencoded()\r",
+													"{\r",
+													"    d = new Date();\r",
+													"    tz = \"+05:00\";\r",
+													"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+													"    return encodeURI(res);\r",
+													"}\r",
+													"\r",
+													"function twodigits(par)\r",
+													"{\r",
+													"    if(par.length > 1)\r",
+													"    {\r",
+													"        return par;\r",
+													"    }\r",
+													"    else\r",
+													"    {\r",
+													"        return \"0\" + par;\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"accept-encoding": true,
+											"connection": true,
+											"content-type": true,
+											"user-agent": true
+										},
+										"followRedirects": false
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept-Charset",
+												"type": "text",
+												"value": "UTF-8"
+											},
+											{
+												"key": "Host",
+												"type": "text",
+												"value": "",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "agentId",
+													"value": "1440",
+													"type": "text"
+												},
+												{
+													"key": "srcPayId",
+													"value": "{{srcPayId}}",
+													"type": "text"
+												},
+												{
+													"key": "reqTime",
+													"value": "{{currentTimeURLencoded}}",
+													"type": "text"
+												},
+												{
+													"key": "reqType",
+													"value": "abandonPayment",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{{espp_base_url}}:8443/uni-new",
+											"protocol": "https",
+											"host": [
+												"{{espp_base_url}}"
+											],
+											"port": "8443",
+											"path": [
+												"uni-new"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"function getRandomInt(max) {",
+					"  return Math.floor(Math.random() * max);",
+					"}",
+					"",
+					"function getFormattedDateToJSON()",
+					"{",
+					"    d = new Date();",
+					"    tz = \"+05:00\";",
+					"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; ",
+					"    return res;",
+					"}",
+					"",
+					"function twodigits(par)",
+					"{",
+					"    if(par.length > 1)",
+					"    {",
+					"        return par;",
+					"    }",
+					"    else",
+					"    {",
+					"        return \"0\" + par;",
+					"    }",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": ""
+		},
+		{
+			"key": "srcPayId",
+			"value": ""
+		},
+		{
+			"key": "currentTimeJSON",
+			"value": ""
+		},
+		{
+			"key": "esppPayId",
+			"value": ""
+		},
+		{
+			"key": "currentTimeURLencoded",
+			"value": ""
+		}
+	]
+}
