@@ -6536,7 +6536,7 @@
 									"response": []
 								},
 								{
-									"name": "getCardInfo-кр-п. (reqSttus = 113)",
+									"name": "getCardInfo-сис2.(reqSttus = 113)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6558,6 +6558,96 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getCardInfo-сис2.уд.карта (reqSttus = 111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getCardInfo-сис2. несущ. карта(reqStatus=111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6766,7 +6856,7 @@
 									"response": []
 								},
 								{
-									"name": "switchPayCard-кр-п. (reqSttus = 113)",
+									"name": "switchPayCard-сис2. (reqSttus = 113)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6788,6 +6878,96 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "switchPayCard-сис2.уд.карта (reqSttus = 111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "switchPayCard-сис2. несущ. карта(reqStatus=111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6996,7 +7176,7 @@
 									"response": []
 								},
 								{
-									"name": "smsNum-кр-п. (reqSttus = 113)",
+									"name": "smsNum-сис2. (reqSttus = 113)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7018,6 +7198,96 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "smsNum-сис2.уд.карта (reqSttus = 111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "smsNum-сис2. несущ. карта(reqStatus=111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"phoneNum\":\"9111111112\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -7238,7 +7508,7 @@
 									"response": []
 								},
 								{
-									"name": "createRule-кр-п. (reqSttus = 113)",
+									"name": "createRule-сис2. (reqSttus = 113)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7260,6 +7530,96 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createRule-сис2.уд.карта(reqSttus = 111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createRule-сис2. несущ. карта(reqStatus=111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -7468,7 +7828,7 @@
 									"response": []
 								},
 								{
-									"name": "getRuleInfo-кр-п. (reqSttus = 213)",
+									"name": "getRuleInfo-сис2. (reqSttus = 213)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7490,6 +7850,96 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getRuleInfo-сис2.уд.правило(reqSttus = 211)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\":{{delRule}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getRuleInfo-сис2. несущ. правило(reqStatus=211)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\":\"{{ficRule}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -8376,7 +8826,7 @@
 									"response": []
 								},
 								{
-									"name": "stopRule-кр-п. (reqSttus = 0)",
+									"name": "stopRule-сис2. (reqSttus = 0)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8398,6 +8848,96 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stopRule-сис2.уд.правило(reqSttus = 211)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stopRule-сис2. несущ. правило(reqStatus=211)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -8561,7 +9101,7 @@
 									"response": []
 								},
 								{
-									"name": "resumeRule-кр-п. (reqSttus = 213)",
+									"name": "resumeRule-сис2. (reqSttus = 213)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8649,6 +9189,96 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "resumeRule-сис2.уд.правило(reqSttus = 211)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "resumeRule-сис2. несущ. правило(reqStatus=211)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -8656,7 +9286,7 @@
 							"name": "deleteRule",
 							"item": [
 								{
-									"name": "deleteRule-уд.правило(reqSttus = 0)",
+									"name": "deleteRule-уд.правило(reqStatus = 0)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8746,7 +9376,7 @@
 									"response": []
 								},
 								{
-									"name": "deleteRule-кр-п. (reqSttus = 213)",
+									"name": "deleteRule-сис2. (reqStatus = 213)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8836,7 +9466,7 @@
 									"response": []
 								},
 								{
-									"name": "deleteRule-кр-п. (reqSttus = 0)",
+									"name": "deleteRule-сис2. (reqStatus = 0)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8858,6 +9488,96 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteRule-сис2.уд.правило(reqStatus = 0)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteRule-сис2. несущ. правило(reqStatus=211)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -9071,7 +9791,7 @@
 							"name": "deleteCard",
 							"item": [
 								{
-									"name": "deleteCard-уд.карта (reqSttus = 0)",
+									"name": "deleteCard-уд.карта (reqStatus = 0)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9206,7 +9926,7 @@
 									"response": []
 								},
 								{
-									"name": "deleteCard-кр-п. (reqSttus = 113)",
+									"name": "deleteCard-сис2. (reqSttus = 113)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9296,7 +10016,7 @@
 									"response": []
 								},
 								{
-									"name": "deleteCard-кр-п. (reqSttus = 0)",
+									"name": "deleteCard-сис2. (reqSttus = 0)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9318,6 +10038,51 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteCard-сис2. несущ. карта(reqStatus=111)",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -9928,7 +10693,97 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId_2}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId_2}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteCard",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteAccRules",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteAccRules\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -10141,7 +10996,7 @@
 									"response": []
 								},
 								{
-									"name": "krRegCard",
+									"name": "regCard-сис. 2",
 									"event": [
 										{
 											"listen": "test",
@@ -10199,7 +11054,7 @@
 									"response": []
 								},
 								{
-									"name": "krConfirmRegister",
+									"name": "confirmRegister-сис. 2",
 									"event": [
 										{
 											"listen": "prerequest",
@@ -10255,7 +11110,7 @@
 									"response": []
 								},
 								{
-									"name": "krGetCardsList",
+									"name": "getCardsList-сис. 2",
 									"event": [
 										{
 											"listen": "prerequest",
@@ -10271,7 +11126,7 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"krEsppCardId\", jsonData.cards[0].esppCardId);"
+													"postman.setEnvironmentVariable(\"esppCardId_2\", jsonData.cards[0].esppCardId);"
 												],
 												"type": "text/javascript"
 											}
@@ -10325,321 +11180,6 @@
 						{
 							"name": "getCardInfo",
 							"item": [
-								{
-									"name": "getCardInfo-уд.карта (reqSttus = 111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getCardInfo-несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getCardInfo-др. УЗ (reqStatus=112)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getCardInfo-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getCardInfo-кр-п. (reqSttus = 113)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getCardInfo-кр-п.уд.карта (reqSttus = 111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getCardInfo-кр-п. несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
 								{
 									"name": "getCardInfo-кр-п. др. УЗ (reqStatus=112)",
 									"protocolProfileBehavior": {
@@ -10736,321 +11276,6 @@
 							"name": "switchPayCard",
 							"item": [
 								{
-									"name": "switchPayCard-уд.карта (reqSttus = 111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "switchPayCard-несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "switchPayCard-др. УЗ (reqStatus=112)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "switchPayCard-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "switchPayCard-кр-п. (reqSttus = 113)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "switchPayCard-кр-п.уд.карта (reqSttus = 111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "switchPayCard-кр-п. несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "switchPayCard-кр-п. др. УЗ (reqStatus=112)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
@@ -11145,321 +11370,6 @@
 						{
 							"name": "smsNum",
 							"item": [
-								{
-									"name": "smsNum-уд.карта (reqSttus = 111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "smsNum-несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"phoneNum\":\"9111111111\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "smsNum-др. УЗ (reqStatus=112)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "smsNum-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "smsNum-кр-п. (reqSttus = 113)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "smsNum-кр-п.уд.карта (reqSttus = 111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"phoneNum\":\"9111111112\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "smsNum-кр-п. несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"phoneNum\":\"9111111112\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
 								{
 									"name": "smsNum-кр-п. др. УЗ (reqStatus=112)",
 									"protocolProfileBehavior": {
@@ -11556,7 +11466,7 @@
 							"name": "createRule",
 							"item": [
 								{
-									"name": "createRule-уд.карта(reqSttus = 111)",
+									"name": "createRule-кр-п. др. УЗ (reqStatus=112)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -11577,7 +11487,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -11601,52 +11511,19 @@
 									"response": []
 								},
 								{
-									"name": "createRule-несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
+									"name": "createRule-кр-п. reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);"
+												],
+												"type": "text/javascript"
 											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
 										}
-									},
-									"response": []
-								},
-								{
-									"name": "createRule-др. УЗ (reqStatus=112)",
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -11667,7 +11544,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999603\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -11724,301 +11601,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "krCreateRule",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"krRuleId\", jsonData.ruleId);"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{krEsppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999603\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "createRule-кр-п. (reqSttus = 113)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "createRule-кр-п.уд.карта(reqSttus = 111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "createRule-кр-п. несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "createRule-кр-п. др. УЗ (reqStatus=112)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "createRule-кр-п. reaStatus=0",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"RuleId\", jsonData.RuleId);"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999604\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -12046,321 +11629,6 @@
 						{
 							"name": "getRuleInfo",
 							"item": [
-								{
-									"name": "getRuleInfo-уд.правило(reqSttus = 211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": {{delRule}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getRuleInfo-несущ. правило(reqStatus=211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": \"{{ficRule}}\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getRuleInfo-др. УЗ (reqStatus=212)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getRuleInfo-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getRuleInfo-кр-п. (reqSttus = 213)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getRuleInfo-кр-п.уд.правило(reqSttus = 211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\":{{delRule}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getRuleInfo-кр-п. несущ. правило(reqStatus=211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"ruleId\":\"{{ficRule}}\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
 								{
 									"name": "getRuleInfo-кр-п. др. УЗ (reqStatus=212)",
 									"protocolProfileBehavior": {
@@ -12460,97 +11728,7 @@
 									"name": "Проверка карты",
 									"item": [
 										{
-											"name": "updateRule-уд.карта(reqSttus = 111)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-несущ. карта(reqStatus=111)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "getCardsList_updateRule",
+											"name": "getCardsList-сис. 1, УЗ test_1",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -12566,7 +11744,7 @@
 													"script": {
 														"exec": [
 															"var jsonData = JSON.parse(responseBody);\r",
-															"postman.setEnvironmentVariable(\"upEsppCardId\", jsonData.cards[0].esppCardId);"
+															"postman.setEnvironmentVariable(\"esppCardId_sys1_uz1\", jsonData.cards[0].esppCardId);"
 														],
 														"type": "text/javascript"
 													}
@@ -12616,23 +11794,14 @@
 											"response": []
 										},
 										{
-											"name": "krGetCardsList_updateRule",
+											"name": "CreateRule-cист. 2",
 											"event": [
-												{
-													"listen": "prerequest",
-													"script": {
-														"exec": [
-															""
-														],
-														"type": "text/javascript"
-													}
-												},
 												{
 													"listen": "test",
 													"script": {
 														"exec": [
 															"var jsonData = JSON.parse(responseBody);\r",
-															"postman.setEnvironmentVariable(\"krUpEsppCardId\", jsonData.cards[0].esppCardId);"
+															"postman.setEnvironmentVariable(\"ruleId_2\", jsonData.ruleId);"
 														],
 														"type": "text/javascript"
 													}
@@ -12658,298 +11827,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-др. УЗ (reqStatus=112)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{upEsppCardId}}, от УЗ test_1\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-reaStatus=0",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-кр-п. (reqSttus = 113)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-кр-п.уд.карта(reqSttus = 111)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-кр-п. несущ. карта(reqStatus=111)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "getCardsList-сис. 2, УЗ test_1",
-											"event": [
-												{
-													"listen": "prerequest",
-													"script": {
-														"exec": [
-															""
-														],
-														"type": "text/javascript"
-													}
-												},
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"var jsonData = JSON.parse(responseBody);\r",
-															"postman.setEnvironmentVariable(\"esppCardId_sys2_uz1\", jsonData.cards[0].esppCardId);"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId_2}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999603\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -12994,7 +11872,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{upEsppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId_2}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId_sys1_uz1}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -13068,52 +11946,28 @@
 									"name": "Проверка правила",
 									"item": [
 										{
-											"name": "updateRule-несущ. правило(reqStatus=211)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
+											"name": "getCardsList-сис. 2, УЗ test_1",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
 													}
 												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var jsonData = JSON.parse(responseBody);\r",
+															"postman.setEnvironmentVariable(\"esppCardId_sys2_uz1\", jsonData.cards[0].esppCardId);"
+														],
+														"type": "text/javascript"
+													}
 												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-уд.правило(reqSttus = 211)",
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -13134,232 +11988,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-др. УЗ (reqStatus=212)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{upEsppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-reaStatus=0",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-кр-п. (reqSttus = 213)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{krEsppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-кр-п.уд.правило(reqSttus = 211)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{krEsppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://autopay-test.rt.ru:8443/sdp",
-													"protocol": "https",
-													"host": [
-														"autopay-test",
-														"rt",
-														"ru"
-													],
-													"port": "8443",
-													"path": [
-														"sdp"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "updateRule-кр-п. несущ. правило(reqStatus=211)",
-											"protocolProfileBehavior": {
-												"disabledSystemHeaders": {
-													"accept": true,
-													"content-type": true,
-													"accept-encoding": true,
-													"connection": true
-												},
-												"strictSSL": false
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json; charset=UTF-8",
-														"type": "default"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{krEsppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -13404,7 +12033,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{krUpEsppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId_sys2_uz1}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -13449,7 +12078,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{krEsppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+													"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId_2}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -13479,321 +12108,6 @@
 						{
 							"name": "stopRule",
 							"item": [
-								{
-									"name": "stopRule-уд.правило(reqSttus = 211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stopRule-несущ. правило(reqStatus=211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stopRule-др. УЗ (reqStatus=212)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stopRule-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stopRule-кр-п. (reqSttus = 213)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stopRule-кр-п.уд.правило(reqSttus = 211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stopRule-кр-п. несущ. правило(reqStatus=211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
 								{
 									"name": "stopRule-кр-п. др. УЗ (reqStatus=212)",
 									"protocolProfileBehavior": {
@@ -13890,321 +12204,6 @@
 							"name": "resumeRule",
 							"item": [
 								{
-									"name": "resumeRule-уд.правило(reqSttus = 211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "resumeRule-несущ. правило(reqStatus=211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "resumeRule-др. УЗ (reqStatus=212)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "resumeRule-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "resumeRule-кр-п. (reqSttus = 213)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{krRuleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "resumeRule-кр-п.уд.правило(reqSttus = 211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "resumeRule-кр-п. несущ. правило(reqStatus=211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "resumeRule-кр-п. др. УЗ (reqStatus=212)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
@@ -14299,321 +12298,6 @@
 						{
 							"name": "deleteRule",
 							"item": [
-								{
-									"name": "deleteRule-уд.правило(reqSttus = 0)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteRule-несущ. правило(reqStatus=211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteRule-др. УЗ (reqStatus=212)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteRule-кр-п. (reqSttus = 213)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteRule-кр-п.уд.правило(reqSttus = 211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": {{delRule}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteRule-кр-п. несущ. правило(reqStatus=211)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"ruleId\": \"{{ficRule}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteRule-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
 								{
 									"name": "deleteRule-кр-п. др. УЗ (reqStatus=212)",
 									"protocolProfileBehavior": {
@@ -14895,321 +12579,6 @@
 							"name": "deleteCard",
 							"item": [
 								{
-									"name": "deleteCard-уд.карта (reqSttus = 0)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteCard-несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteCard-др. УЗ (reqStatus=112)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteCard-кр-п. (reqSttus = 113)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteCard-кр-п.уд.карта (reqSttus = 111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{delCard}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteCard-кр-п. несущ. карта(reqStatus=111)",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"{{ficCard}}\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "deleteCard-reaStatus=0",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "deleteCard-кр-п. др. УЗ (reqStatus=112)",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
@@ -15400,51 +12769,6 @@
 							"name": "getPaymentsInfo",
 							"item": [
 								{
-									"name": "getPaymentsInfo-система 1",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getPaymentsInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"startDate\": \"2021-10-19T00:00:00.437+05:00\",\r\n    \"endDate\": \"2021-10-19T23:59:59.437+05:00\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "getPaymentsInfo-система 2",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
@@ -15490,52 +12814,7 @@
 									"response": []
 								},
 								{
-									"name": "getPaymentsInfo-кр.п. система 2",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"accept": true,
-											"content-type": true,
-											"accept-encoding": true,
-											"connection": true
-										},
-										"strictSSL": false
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json; charset=UTF-8",
-												"type": "default"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getPaymentsInfo\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    },\r\n    \"startDate\": \"2021-10-19T00:00:00.437+05:00\",\r\n    \"endDate\": \"2021-10-19T23:59:59.437+05:00\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://autopay-test.rt.ru:8443/sdp",
-											"protocol": "https",
-											"host": [
-												"autopay-test",
-												"rt",
-												"ru"
-											],
-											"port": "8443",
-											"path": [
-												"sdp"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "getPaymentsInfo-кр.п. система 1",
+									"name": "getPaymentsInfo-система 1",
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -16078,7 +13357,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delAcc_esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{delAcc_esppCardId}},\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999602\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -16280,6 +13559,96 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "deleteCard-сис. 1",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId_2}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteCard-сис. 2",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4826\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://autopay-test.rt.ru:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"autopay-test",
+												"rt",
+												"ru"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						}
@@ -16318,7 +13687,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_1\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -16330,6 +13699,107 @@
 							"protocol": "https",
 							"host": [
 								"{{autopay-test}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCardsList Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true,
+							"accept-encoding": true,
+							"connection": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://autopay-test.rt.ru:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"autopay-test",
+								"rt",
+								"ru"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAccRules",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true,
+							"accept-encoding": true,
+							"connection": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"deleteAccRules\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://autopay-test.rt.ru:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"autopay-test",
+								"rt",
+								"ru"
 							],
 							"port": "8443",
 							"path": [
@@ -16541,7 +14011,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"7031\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"1098096\"\r\n}",
+							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"1098550\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
