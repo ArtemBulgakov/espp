@@ -26,7 +26,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDateToJSON());"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -52,7 +52,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"regCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"regCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -188,7 +188,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"reqTime\": {{currentTimeJSON}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\":  {{ap_svcTypeId}},\r\n    \"svcNum\": {{ap_svcNum}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"reqTime\": {{currentTimeJSON}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\":  {{ap_svcTypeId}},\r\n    \"svcNum\": {{ap_svcNum}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -231,7 +231,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    }           \r\n}",
+							"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    }           \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -295,7 +295,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -338,7 +338,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -381,7 +381,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -467,7 +467,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
+							"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -510,7 +510,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\":{{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+							"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\":{{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -591,7 +591,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"reqTime\": {{currentTimeJSON}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"reqTime\": {{currentTimeJSON}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -634,7 +634,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+							"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -677,7 +677,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -720,7 +720,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -763,7 +763,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n  \"pageView\": \"test\",\r\n  \"urlReturn\": \"http://system.ru/\"    \r\n} ",
+							"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n  \"pageView\": \"test\",\r\n  \"urlReturn\": \"http://system.ru/\"    \r\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -817,7 +817,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n  \"reqId\": {{reqId}}\r\n} ",
+							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n  \"reqId\": {{reqId}}\r\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -860,7 +860,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getPaymentsInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"startDate\": \"2021-10-19T00:00:00.437+05:00\",\r\n    \"endDate\": \"2021-10-19T23:59:59.437+05:00\"\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getPaymentsInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"startDate\": \"2021-10-19T00:00:00.437+05:00\",\r\n    \"endDate\": \"2021-10-19T23:59:59.437+05:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -903,7 +903,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": {{srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": {{srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -946,7 +946,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -989,7 +989,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"deleteAccRules\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": {{ap_accTypeId}},\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"deleteAccRules\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": {{ap_accNum}}\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
