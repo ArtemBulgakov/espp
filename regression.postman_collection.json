@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "03e610cc-4736-458a-8ed0-85f04030bb66",
+		"_postman_id": "13252d2b-91e7-454c-9028-901fc227fc37",
 		"name": "regression",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "12346365"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -1083,7 +1082,12 @@
 													"value": "1440",
 													"type": "text"
 												}
-											]
+											],
+											"options": {
+												"raw": {
+													"language": "text"
+												}
+											}
 										},
 										"url": {
 											"raw": "https://{{espp_base_url}}:8443/uni",
@@ -1219,7 +1223,12 @@
 													"value": "RUR",
 													"type": "text"
 												}
-											]
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
 										"url": {
 											"raw": "https://{{espp_base_url}}:8443/uni",
@@ -1430,7 +1439,12 @@
 													"value": "test@rt.ru",
 													"type": "text"
 												}
-											]
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
 										"url": {
 											"raw": "https://{{espp_base_url}}:8443/uni",
@@ -1624,7 +1638,12 @@
 													"value": "abandonPayment",
 													"type": "text"
 												}
-											]
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
 										"url": {
 											"raw": "https://{{espp_base_url}}:8443/uni",
@@ -1755,7 +1774,12 @@
 													"value": "1440",
 													"type": "text"
 												}
-											]
+											],
+											"options": {
+												"raw": {
+													"language": "text"
+												}
+											}
 										},
 										"url": {
 											"raw": "https://{{espp_base_url}}:8443/uni-new",
@@ -1896,7 +1920,12 @@
 													"value": "OLDER",
 													"type": "text"
 												}
-											]
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
 										"url": {
 											"raw": "https://{{espp_base_url}}:8443/uni-new",
@@ -2112,7 +2141,12 @@
 													"value": "test@rt.ru",
 													"type": "text"
 												}
-											]
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
 										"url": {
 											"raw": "https://{{espp_base_url}}:8443/uni-new",
@@ -2306,7 +2340,12 @@
 													"value": "abandonPayment",
 													"type": "text"
 												}
-											]
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
 										"url": {
 											"raw": "https://{{espp_base_url}}:8443/uni-new",
