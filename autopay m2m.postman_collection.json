@@ -10,1023 +10,1930 @@
 			"name": "json",
 			"item": [
 				{
-					"name": "regCard",
-					"event": [
+					"name": "Добавление карты к УЗ",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);\r",
-									"postman.setEnvironmentVariable(\"reqId\", jsonData.reqId);\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"reqStatus=0\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"regCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"name": "regCard",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"reqId\", jsonData.reqId);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqId is not null\", function () {\r",
+											"    pm.response.to.have.jsonBody(\"reqId\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
 							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "confirmRegister",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set(\"cardId\", getRandomInt(1000000000));\r",
-									"\r",
-									"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDateToJSON());\r",
-									"\r",
-									"\r",
-									"function getRandomInt(max) {\r",
-									"  return Math.floor(Math.random() * max);\r",
-									"}\r",
-									"\r",
-									"function getFormattedDateToJSON()\r",
-									"{\r",
-									"    d = new Date();\r",
-									"    tz = \"+05:00\";\r",
-									"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
-									"    return res;\r",
-									"}\r",
-									"\r",
-									"function twodigits(par)\r",
-									"{\r",
-									"    if(par.length > 1)\r",
-									"    {\r",
-									"        return par;\r",
-									"    }\r",
-									"    else\r",
-									"    {\r",
-									"        return \"0\" + par;\r",
-									"    }\r",
-									"}"
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
 								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"confirmRegister\",\r\n    \"reqId\": {{reqId}},\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"reqStatus\": 0,\r\n    \"registerStatus\": 2,\r\n    \"cardId\": {{cardId}},\r\n    \"reqNote\": \"success\",\r\n    \"reqUserMsg\": \"Карта успешно привязана\",\r\n    \"cardInfo\": {\r\n        \"cardType\": \"VISA\",\r\n        \"cardNum\": \"{{ap_cardNum}}\",\r\n        \"bankName\": \"PJSC TestBank\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"regCard\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdbk",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdbk"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getCardsList",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
+							},
+							"response": []
 						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);\r",
-									"postman.setEnvironmentVariable(\"esppCardId\", jsonData.cards[0].esppCardId);\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"reqStatus=0\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"name": "confirmRegister",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"cardId\", getRandomInt(1000000000));\r",
+											"\r",
+											"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDateToJSON());\r",
+											"\r",
+											"\r",
+											"function getRandomInt(max) {\r",
+											"  return Math.floor(Math.random() * max);\r",
+											"}\r",
+											"\r",
+											"function getFormattedDateToJSON()\r",
+											"{\r",
+											"    d = new Date();\r",
+											"    tz = \"+05:00\";\r",
+											"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+											"    return res;\r",
+											"}\r",
+											"\r",
+											"function twodigits(par)\r",
+											"{\r",
+											"    if(par.length > 1)\r",
+											"    {\r",
+											"        return par;\r",
+											"    }\r",
+											"    else\r",
+											"    {\r",
+											"        return \"0\" + par;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
 								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
 							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "createRule",
-					"event": [
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"confirmRegister\",\r\n    \"reqId\": \"{{reqId}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"reqStatus\": 0,\r\n    \"registerStatus\": 2,\r\n    \"cardId\": \"{{cardId}}\",\r\n    \"reqNote\": \"success\",\r\n    \"reqUserMsg\": \"Карта успешно привязана\",\r\n    \"cardInfo\": {\r\n        \"cardType\": \"VISA\",\r\n        \"cardNum\": \"{{ap_cardNum}}\",\r\n        \"bankName\": \"PJSC TestBank\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdbk",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdbk"
+									]
+								}
+							},
+							"response": []
+						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);\r",
-									"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);"
+							"name": "getCardsList",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"cards is not null\", function () {\r",
+											"pm.response.to.have.jsonBody(\"cards[0].esppCardId\");\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"esppCardId\", jsonData.cards[0].esppCardId);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
 								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"svcTypeId\":  {{ap_svcTypeId}},\r\n    \"svcNum\": {{ap_svcNum}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "getRulesList",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }           \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getCardInfo",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getRuleInfo",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"ruleId\": {{ruleId}}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "checkRuleParams",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"checkRuleParams\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"SDPPAID\"\r\n    },\r\n    \"svcTypeId\": {{ap_svcTypeId}},\r\n    \"svcNum\": \"{{ap_accNum}}\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "smsNum",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"phoneNum\":\"9111111111\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "switchPayCard",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\":{{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateRule",
-					"event": [
+					"name": "Добавление правила",
+					"item": [
 						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set(\"cardId\", \"autotest_\" + getRandomInt(1000000000));\r",
-									"\r",
-									"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDateToJSON());\r",
-									"\r",
-									"\r",
-									"function getRandomInt(max) {\r",
-									"  return Math.floor(Math.random() * max);\r",
-									"}\r",
-									"\r",
-									"function getFormattedDateToJSON()\r",
-									"{\r",
-									"    d = new Date();\r",
-									"    tz = \"+05:00\";\r",
-									"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
-									"    return res;\r",
-									"}\r",
-									"\r",
-									"function twodigits(par)\r",
-									"{\r",
-									"    if(par.length > 1)\r",
-									"    {\r",
-									"        return par;\r",
-									"    }\r",
-									"    else\r",
-									"    {\r",
-									"        return \"0\" + par;\r",
-									"    }\r",
-									"}"
+							"name": "checkRuleParams",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
 								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"reqTime\": {{currentTimeJSON}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}},\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"checkRuleParams\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"SDPPAID\"\r\n    },\r\n    \"svcTypeId\": \"{{ap_svcTypeId}}\",\r\n    \"svcNum\": \"{{ap_svcNum}}\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "defaultCard",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "stopRule",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "resumeRule",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "registerCard",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n  \"pageView\": \"test\",\r\n  \"urlReturn\": \"http://system.ru/\"    \r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getRegisterCardStatus",
-					"event": [
 						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set (\"randomNum\", _.random (10000000000,100000000000000));"
+							"name": "createRule",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Правило создано успешно.\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqNote).to.eql(\"Правило создано успешно.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ruleId is not null\", function () {\r",
+											"   pm.response.to.have.jsonBody(\"ruleId\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ruleId = \" + environment.ruleId, function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    jsonData.ruleId == environment.ruleId;\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
 								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n  \"reqId\": {{reqId}}\r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\",\r\n    \"svcTypeId\":  \"{{ap_svcTypeId}}\",\r\n    \"svcNum\": \"{{ap_svcNum}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
+						{
+							"name": "getRulesList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"ruleList is not null\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    jsonData.rules[0].ruleId == environment.ruleId;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ruleId = \" + environment.ruleId, function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    jsonData.rules[0].ruleId == environment.ruleId;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"esppCardId = \" + environment.esppCardId, function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    jsonData.rules[0].esppCardId == environment.esppCardId;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ap_svcNum = \" + environment.ap_svcNum, function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    jsonData.rules[0].ap_svcNum == environment.ap_svcNum;\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }           \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "getPaymentsInfo",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getPaymentsInfo\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"startDate\": \"2021-10-19T00:00:00.437+05:00\",\r\n    \"endDate\": \"2021-10-19T23:59:59.437+05:00\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Работа с правилом",
+					"item": [
+						{
+							"name": "getRuleInfo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ruleStatus=1\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.ruleStatus).to.eql(1);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"esppCardId = \" + environment.esppCardId, function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    jsonData.esppCardId == environment.esppCardId;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ap_svcNum = \" + environment.ap_svcNum, function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    jsonData.ap_svcNum == environment.ap_svcNum;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ruleType=MOBILE\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.ruleInfo.ruleType).to.eql(\"MOBILE\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
 							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"getRuleInfo\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"ruleId\": \"{{ruleId}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateRule",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"cardId\", \"autotest_\" + getRandomInt(1000000000));\r",
+											"\r",
+											"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDateToJSON());\r",
+											"\r",
+											"\r",
+											"function getRandomInt(max) {\r",
+											"  return Math.floor(Math.random() * max);\r",
+											"}\r",
+											"\r",
+											"function getFormattedDateToJSON()\r",
+											"{\r",
+											"    d = new Date();\r",
+											"    tz = \"+05:00\";\r",
+											"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+											"    return res;\r",
+											"}\r",
+											"\r",
+											"function twodigits(par)\r",
+											"{\r",
+											"    if(par.length > 1)\r",
+											"    {\r",
+											"        return par;\r",
+											"    }\r",
+											"    else\r",
+											"    {\r",
+											"        return \"0\" + par;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Правило успешно изменено.\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqNote).to.eql(\"Правило успешно изменено.\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"updateRule\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"ruleId\": \"{{ruleId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"PREPAID\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"day\": \"30\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "stopRule",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"stopRule\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"ruleId\": \"{{ruleId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "resumeRule",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"resumeRule\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"ruleId\": \"{{ruleId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "deleteRule",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": {{srcSystemId}},\r\n    \"ruleId\": {{ruleId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Рвбота с картой",
+					"item": [
+						{
+							"name": "getCardInfo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"esppCardId = \" + environment.esppCardId, function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    jsonData.cardInfo.esppCardId == environment.esppCardId;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"cardNum = \" + environment.ap_cardNum, function () {\r",
+											"   var jsonData = pm.response.json();\r",
+											"   pm.expect(jsonData.cardInfo.cardNum).to.eql(environment.ap_cardNum);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
 							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "smsNum",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Выполнено успешно.\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqNote).to.eql(\"Выполнено успешно.\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"smsNum\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\",\r\n    \"phoneNum\":\"9111111111\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "switchPayCard",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Выполнено успешно.\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqNote).to.eql(\"Выполнено успешно.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"activeCard=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.activeCard).to.eql(0);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"switchPayCard\",\r\n    \"srcSystemId\":\"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "defaultCard",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Выполнено успешно.\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqNote).to.eql(\"Выполнено успешно.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"defaultCard\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "не р-ван (registerCard)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n  \"pageView\": \"test\",\r\n  \"urlReturn\": \"http://system.ru/\"    \r\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "не р-ван (getRegisterCardStatus)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set (\"randomNum\", _.random (10000000000,100000000000000));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n  \"reqId\": \"{{reqId}}\"\r\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "deleteCard",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Удаление правила",
+					"item": [
+						{
+							"name": "deleteRule",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Запрос выполнен успешно.\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqNote).to.eql(\"Запрос выполнен успешно.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
-							}
-						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
 							],
-							"port": "8443",
-							"path": [
-								"sdp"
-							]
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"ruleId\": \"{{ruleId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "deleteAccRules",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true,
-							"content-type": true,
-							"accept-encoding": true,
-							"connection": true
-						},
-						"strictSSL": false
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; charset=UTF-8",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"deleteAccRules\",\r\n    \"srcSystemId\": {{ap_srcSystemId}},\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Удаление всех правил с УЗ",
+					"item": [
+						{
+							"name": "Добавление правила №1",
+							"item": [
+								{
+									"name": "checkRuleParams",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"checkRuleParams\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"SDPPAID\"\r\n    },\r\n    \"svcTypeId\": \"{{ap_svcTypeId}}\",\r\n    \"svcNum\": \"{{ap_svcNum}}\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{autopay_pprod}}:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"{{autopay_pprod}}"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createRule",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Правило создано успешно.\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqNote).to.eql(\"Правило создано успешно.\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"ruleId is not null\", function () {\r",
+													"   pm.response.to.have.jsonBody(\"ruleId\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"ruleId = \" + environment.ruleId, function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.ruleId == environment.ruleId;\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\",\r\n    \"svcTypeId\":  \"{{ap_svcTypeId}}\",\r\n    \"svcNum\": \"{{ap_svcNum}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{autopay_pprod}}:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"{{autopay_pprod}}"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getRulesList",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"ruleList is not null\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.rules[0].ruleId == environment.ruleId;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"ruleId = \" + environment.ruleId, function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.rules[0].ruleId == environment.ruleId;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"esppCardId = \" + environment.esppCardId, function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.rules[0].esppCardId == environment.esppCardId;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"ap_svcNum = \" + environment.ap_svcNum, function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.rules[0].ap_svcNum == environment.ap_svcNum;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }           \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{autopay_pprod}}:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"{{autopay_pprod}}"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
 								}
-							}
+							]
 						},
-						"url": {
-							"raw": "https://{{autopay_pprod}}:8443/sdp",
-							"protocol": "https",
-							"host": [
-								"{{autopay_pprod}}"
-							],
-							"port": "8443",
-							"path": [
-								"sdp"
+						{
+							"name": "Добавление правила №2",
+							"item": [
+								{
+									"name": "checkRuleParams",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"checkRuleParams\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"SDPPAID\"\r\n    },\r\n    \"svcTypeId\": \"{{ap_svcTypeId}}\",\r\n    \"svcNum\": \"{{ap_svcNum_2}}\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{autopay_pprod}}:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"{{autopay_pprod}}"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createRule",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Правило создано успешно.\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqNote).to.eql(\"Правило создано успешно.\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"ruleId is not null\", function () {\r",
+													"   pm.response.to.have.jsonBody(\"ruleId\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"ruleId = \" + environment.ruleId, function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.ruleId == environment.ruleId;\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\",\r\n    \"svcTypeId\":  \"{{ap_svcTypeId}}\",\r\n    \"svcNum\": \"{{ap_svcNum_2}}\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{autopay_pprod}}:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"{{autopay_pprod}}"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getRulesList",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"ruleList is not null\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.rules[0].ruleId == environment.ruleId;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"ruleId = \" + environment.ruleId, function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.rules[0].ruleId == environment.ruleId;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"esppCardId = \" + environment.esppCardId, function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.rules[0].esppCardId == environment.esppCardId;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"ap_svcNum = \" + environment.ap_svcNum, function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    jsonData.rules[0].ap_svcNum == environment.ap_svcNum;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }           \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{autopay_pprod}}:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"{{autopay_pprod}}"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Удаление правил",
+							"item": [
+								{
+									"name": "deleteAccRules",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true,
+											"content-type": true,
+											"accept-encoding": true,
+											"connection": true
+										},
+										"strictSSL": false
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json; charset=UTF-8",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reqType\": \"deleteAccRules\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{autopay_pprod}}:8443/sdp",
+											"protocol": "https",
+											"host": [
+												"{{autopay_pprod}}"
+											],
+											"port": "8443",
+											"path": [
+												"sdp"
+											]
+										}
+									},
+									"response": []
+								}
 							]
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "Удаление карты",
+					"item": [
+						{
+							"name": "deleteCard",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Выполнено успешно.\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqNote).to.eql(\"Выполнено успешно.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"esppCardId\": \"{{esppCardId}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Список платежей по правилам УЗ",
+					"item": [
+						{
+							"name": "getPaymentsInfo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"reqStatus=0\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true,
+									"content-type": true,
+									"accept-encoding": true,
+									"connection": true
+								},
+								"strictSSL": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reqType\": \"getPaymentsInfo\",\r\n    \"srcSystemId\": \"{{ap_srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{ap_accTypeId}}\",\r\n        \"accNum\": \"{{ap_accNum}}\"\r\n    },\r\n    \"startDate\": \"2021-10-19T00:00:00.437+05:00\",\r\n    \"endDate\": \"2021-10-19T23:59:59.437+05:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{autopay_pprod}}:8443/sdp",
+									"protocol": "https",
+									"host": [
+										"{{autopay_pprod}}"
+									],
+									"port": "8443",
+									"path": [
+										"sdp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
