@@ -5999,7 +5999,16 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"reqId\", jsonData.reqId);"
+													"postman.setEnvironmentVariable(\"reqId\", jsonData.reqId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -6056,6 +6065,19 @@
 											"script": {
 												"exec": [
 													"pm.collectionVariables.set (\"randomNum\", _.random (100000,100000000));"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -6121,7 +6143,16 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"esppCardId\", jsonData.cards[0].esppCardId);"
+													"postman.setEnvironmentVariable(\"esppCardId\", jsonData.cards[0].esppCardId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -6179,6 +6210,15 @@
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
 													"postman.setEnvironmentVariable(\"reqId_2\", jsonData.reqId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});\r",
 													""
 												],
 												"type": "text/javascript"
@@ -6236,6 +6276,19 @@
 											"script": {
 												"exec": [
 													"pm.collectionVariables.set (\"randomNum\", _.random (100000,100000000));"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -6301,7 +6354,16 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"esppCardId_2\", jsonData.cards[0].esppCardId);"
+													"postman.setEnvironmentVariable(\"esppCardId_2\", jsonData.cards[0].esppCardId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -6357,6 +6419,24 @@
 							"item": [
 								{
 									"name": "getCardInfo-уд.карта (reqSttus = 111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6402,6 +6482,24 @@
 								},
 								{
 									"name": "getCardInfo-несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6447,6 +6545,24 @@
 								},
 								{
 									"name": "getCardInfo-др. УЗ (reqStatus=112)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=112\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(112);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6492,6 +6608,24 @@
 								},
 								{
 									"name": "getCardInfo-reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6537,6 +6671,24 @@
 								},
 								{
 									"name": "getCardInfo-сис2.(reqSttus = 113)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=113\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(113);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6582,6 +6734,24 @@
 								},
 								{
 									"name": "getCardInfo-сис2.уд.карта (reqSttus = 111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6627,6 +6797,24 @@
 								},
 								{
 									"name": "getCardInfo-сис2. несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6677,6 +6865,24 @@
 							"item": [
 								{
 									"name": "getCardInfo",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6697,7 +6903,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6722,6 +6928,24 @@
 								},
 								{
 									"name": "switchPayCard-уд.карта (reqSttus = 111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6767,6 +6991,24 @@
 								},
 								{
 									"name": "switchPayCard-несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6812,6 +7054,24 @@
 								},
 								{
 									"name": "switchPayCard-др. УЗ (reqStatus=112)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=112\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(112);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6857,6 +7117,24 @@
 								},
 								{
 									"name": "switchPayCard-reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6902,6 +7180,24 @@
 								},
 								{
 									"name": "switchPayCard-сис2. (reqSttus = 113)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=113\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(113);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6947,6 +7243,24 @@
 								},
 								{
 									"name": "switchPayCard-сис2.уд.карта (reqSttus = 111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -6992,6 +7306,24 @@
 								},
 								{
 									"name": "switchPayCard-сис2. несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7037,6 +7369,24 @@
 								},
 								{
 									"name": "getCardInfo",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7057,7 +7407,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -7087,6 +7437,24 @@
 							"item": [
 								{
 									"name": "getCardInfo",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7107,7 +7475,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -7132,6 +7500,24 @@
 								},
 								{
 									"name": "smsNum-уд.карта (reqSttus = 111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7177,6 +7563,24 @@
 								},
 								{
 									"name": "smsNum-несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7222,6 +7626,24 @@
 								},
 								{
 									"name": "smsNum-др. УЗ (reqStatus=112)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=112\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(112);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7267,6 +7689,24 @@
 								},
 								{
 									"name": "smsNum-reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7312,6 +7752,24 @@
 								},
 								{
 									"name": "smsNum-сис2. (reqSttus = 113)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=113\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(113);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7357,6 +7815,24 @@
 								},
 								{
 									"name": "smsNum-сис2.уд.карта (reqSttus = 111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7402,6 +7878,24 @@
 								},
 								{
 									"name": "smsNum-сис2. несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7447,6 +7941,24 @@
 								},
 								{
 									"name": "getCardInfo",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7467,7 +7979,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
+											"raw": "{\r\n    \"reqType\": \"getCardInfo\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": {{esppCardId}}\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -7497,6 +8009,24 @@
 							"item": [
 								{
 									"name": "createRule-уд.карта(reqSttus = 111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7542,6 +8072,24 @@
 								},
 								{
 									"name": "createRule-несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7587,6 +8135,24 @@
 								},
 								{
 									"name": "createRule-др. УЗ (reqStatus=112)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=112\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(112);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7638,7 +8204,16 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);"
+													"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -7689,6 +8264,24 @@
 								},
 								{
 									"name": "createRule-сис2. (reqSttus = 113)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=113\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(113);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7734,6 +8327,24 @@
 								},
 								{
 									"name": "createRule-сис2.уд.карта(reqSttus = 111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7779,6 +8390,24 @@
 								},
 								{
 									"name": "createRule-сис2. несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7829,6 +8458,24 @@
 							"item": [
 								{
 									"name": "getRuleInfo-уд.правило(reqSttus = 211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7874,6 +8521,24 @@
 								},
 								{
 									"name": "getRuleInfo-несущ. правило(reqStatus=211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7919,6 +8584,24 @@
 								},
 								{
 									"name": "getRuleInfo-др. УЗ (reqStatus=212)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=212\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(212);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -7964,6 +8647,24 @@
 								},
 								{
 									"name": "getRuleInfo-reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8009,6 +8710,24 @@
 								},
 								{
 									"name": "getRuleInfo-сис2. (reqSttus = 213)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=213\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(213);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8054,6 +8773,24 @@
 								},
 								{
 									"name": "getRuleInfo-сис2.уд.правило(reqSttus = 211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8099,6 +8836,24 @@
 								},
 								{
 									"name": "getRuleInfo-сис2. несущ. правило(reqStatus=211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8152,6 +8907,24 @@
 									"item": [
 										{
 											"name": "updateRule-уд.карта(reqStatus = 111)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=111\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8197,6 +8970,24 @@
 										},
 										{
 											"name": "updateRule-несущ. карта(reqStatus=111)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=111\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8257,7 +9048,16 @@
 													"script": {
 														"exec": [
 															"var jsonData = JSON.parse(responseBody);\r",
-															"postman.setEnvironmentVariable(\"esppCardId_sys1_uz1\", jsonData.cards[0].esppCardId);"
+															"postman.setEnvironmentVariable(\"esppCardId_sys1_uz1\", jsonData.cards[0].esppCardId);\r",
+															"\r",
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=0\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+															"});"
 														],
 														"type": "text/javascript"
 													}
@@ -8308,6 +9108,24 @@
 										},
 										{
 											"name": "updateRule-др. УЗ (reqStatus=112)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=112\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(112);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8359,7 +9177,16 @@
 													"script": {
 														"exec": [
 															"var jsonData = JSON.parse(responseBody);\r",
-															"postman.setEnvironmentVariable(\"ruleId_2\", jsonData.ruleId);"
+															"postman.setEnvironmentVariable(\"ruleId_2\", jsonData.ruleId);\r",
+															"\r",
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=0\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+															"});"
 														],
 														"type": "text/javascript"
 													}
@@ -8410,6 +9237,24 @@
 										},
 										{
 											"name": "updateRule-сист.2 (reqStatus = 113)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=113\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(113);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8455,6 +9300,24 @@
 										},
 										{
 											"name": "updateRule-сис2.уд.карта(reqStatus = 111)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=111\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8500,6 +9363,24 @@
 										},
 										{
 											"name": "updateRule-сис2. несущ. карта(reqStatus=111)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=111\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8545,6 +9426,24 @@
 										},
 										{
 											"name": "updateRule-reaStatus=0",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=0\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8595,6 +9494,24 @@
 									"item": [
 										{
 											"name": "updateRule-несущ. правило(reqStatus=211)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=211\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8640,6 +9557,24 @@
 										},
 										{
 											"name": "updateRule-уд.правило(reqStatus = 211)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=211\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8685,6 +9620,24 @@
 										},
 										{
 											"name": "updateRule-др. УЗ (reqStatus=212)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=212\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(212);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8730,6 +9683,24 @@
 										},
 										{
 											"name": "updateRule-сист2. (reqStatus = 0)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"reqStatus=0\", function () {\r",
+															"    var jsonData = pm.response.json();\r",
+															"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"protocolProfileBehavior": {
 												"disabledSystemHeaders": {
 													"accept": true,
@@ -8827,6 +9798,24 @@
 							"item": [
 								{
 									"name": "stopRule-уд.правило(reqStatus = 211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8872,6 +9861,24 @@
 								},
 								{
 									"name": "stopRule-несущ. правило(reqStatus=211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8917,6 +9924,24 @@
 								},
 								{
 									"name": "stopRule-др. УЗ (reqStatus=212)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=212\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(212);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -8962,6 +9987,24 @@
 								},
 								{
 									"name": "stopRule-сист2. (reqStatus = 213)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=213\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(213);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9007,6 +10050,24 @@
 								},
 								{
 									"name": "stopRule-reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9052,6 +10113,24 @@
 								},
 								{
 									"name": "stopRule-ранее ост. парвило reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9097,6 +10176,24 @@
 								},
 								{
 									"name": "stopRule-сис2.уд.правило(reqStatus = 211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9142,6 +10239,24 @@
 								},
 								{
 									"name": "stopRule-сис2. несущ. правило(reqStatus=211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9192,6 +10307,24 @@
 							"item": [
 								{
 									"name": "resumeRule-уд.правило(reqStatus = 211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9237,6 +10370,24 @@
 								},
 								{
 									"name": "resumeRule-несущ. правило(reqStatus=211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9282,6 +10433,24 @@
 								},
 								{
 									"name": "resumeRule-др. УЗ (reqStatus=212)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=212\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(212);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9327,6 +10496,24 @@
 								},
 								{
 									"name": "resumeRule-сис2. (reqStatus = 213)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=213\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(213);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9372,6 +10559,24 @@
 								},
 								{
 									"name": "resumeRule-reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9417,6 +10622,24 @@
 								},
 								{
 									"name": "resumeRule-сис2.уд.правило(reqSttus = 211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9462,6 +10685,24 @@
 								},
 								{
 									"name": "resumeRule-сис2. несущ. правило(reqStatus=211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9512,6 +10753,24 @@
 							"item": [
 								{
 									"name": "deleteRule-уд.правило(reqStatus = 0)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9557,6 +10816,24 @@
 								},
 								{
 									"name": "deleteRule-несущ. правило(reqStatus=211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9602,6 +10879,24 @@
 								},
 								{
 									"name": "deleteRule-сис2. (reqStatus = 213)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=213\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(213);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9647,6 +10942,24 @@
 								},
 								{
 									"name": "deleteRule-reqStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9692,6 +11005,24 @@
 								},
 								{
 									"name": "deleteRule-сис2. (reqStatus = 0)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9737,6 +11068,24 @@
 								},
 								{
 									"name": "deleteRule-сис2.уд.правило(reqStatus = 0)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9782,6 +11131,24 @@
 								},
 								{
 									"name": "deleteRule-сис2. несущ. правило(reqStatus=211)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=211\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(211);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -9981,6 +11348,22 @@
 												],
 												"type": "text/javascript"
 											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
 										}
 									],
 									"protocolProfileBehavior": {
@@ -10028,6 +11411,24 @@
 								},
 								{
 									"name": "deleteCard-уд.карта (reqStatus = 0)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10073,6 +11474,24 @@
 								},
 								{
 									"name": "deleteCard-несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10118,6 +11537,24 @@
 								},
 								{
 									"name": "deleteCard-др. УЗ (reqStatus=112)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=112\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(112);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10163,6 +11600,24 @@
 								},
 								{
 									"name": "deleteCard-сис2. (reqStatus = 113)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=113\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(113);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10208,6 +11663,24 @@
 								},
 								{
 									"name": "deleteCard-reaStatus=0",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10253,6 +11726,24 @@
 								},
 								{
 									"name": "deleteCard-сис2. (reqStatus = 0)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10298,6 +11789,24 @@
 								},
 								{
 									"name": "deleteCard-сис2. несущ. карта(reqStatus=111)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=111\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(111);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10349,6 +11858,22 @@
 											"script": {
 												"exec": [
 													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -10404,6 +11929,24 @@
 							"item": [
 								{
 									"name": "deleteRule",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10449,6 +11992,24 @@
 								},
 								{
 									"name": "deleteCard",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10499,6 +12060,24 @@
 							"item": [
 								{
 									"name": "getPaymentsInfo-система 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10544,6 +12123,24 @@
 								},
 								{
 									"name": "getPaymentsInfo-система 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10600,7 +12197,16 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"reqId_2\", jsonData.reqId);"
+													"postman.setEnvironmentVariable(\"reqId_2\", jsonData.reqId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -10657,6 +12263,19 @@
 											"script": {
 												"exec": [
 													"pm.collectionVariables.set (\"randomNum\", _.random (100000,100000000));"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -10722,7 +12341,16 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"esppCardId_2\", jsonData.cards[0].esppCardId);"
+													"postman.setEnvironmentVariable(\"esppCardId_2\", jsonData.cards[0].esppCardId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -10779,7 +12407,16 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);"
+													"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -10830,6 +12467,24 @@
 								},
 								{
 									"name": "getRuleList",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10875,6 +12530,24 @@
 								},
 								{
 									"name": "deleteAccRules - сист.2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10920,6 +12593,24 @@
 								},
 								{
 									"name": "getRuleList",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -10980,7 +12671,16 @@
 											"script": {
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);\r",
-													"postman.setEnvironmentVariable(\"esppCardId\", jsonData.cards[0].esppCardId);"
+													"postman.setEnvironmentVariable(\"esppCardId\", jsonData.cards[0].esppCardId);\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -11031,6 +12731,24 @@
 								},
 								{
 									"name": "deleteCard",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -11076,6 +12794,24 @@
 								},
 								{
 									"name": "deleteCard",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
@@ -11121,6 +12857,24 @@
 								},
 								{
 									"name": "deleteAccRules-сист1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"reqStatus=0\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"protocolProfileBehavior": {
 										"disabledSystemHeaders": {
 											"accept": true,
