@@ -415,6 +415,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getRegisterCardStatus",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\r\n    \"merchantId\": ,\r\n    \"orderId \":\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
