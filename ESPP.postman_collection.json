@@ -16007,7 +16007,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_01\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -16277,7 +16277,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_9\"\r\n    },\r\n    \"esppCardId\": \"1099727\"\r\n}",
+							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_01\"\r\n    },\r\n    \"esppCardId\": \"1102050\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
