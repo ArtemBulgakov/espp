@@ -376,6 +376,19 @@
 			"item": [
 				{
 					"name": "registerCard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.collectionVariables.set(\"reqCard_reqId\", jsonData.reqId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"content-type": true,
@@ -424,7 +437,8 @@
 							"accept": true,
 							"connection": true,
 							"accept-encoding": true
-						}
+						},
+						"strictSSL": false
 					},
 					"request": {
 						"method": "POST",
@@ -437,7 +451,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\r\n    \"merchantId\": ,\r\n    \"orderId \":\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1153138\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -499,6 +513,15 @@
 		},
 		{
 			"key": "esppCardId",
+			"value": ""
+		},
+		{
+			"key": "reqId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "reqCard_reqId",
 			"value": ""
 		}
 	]
