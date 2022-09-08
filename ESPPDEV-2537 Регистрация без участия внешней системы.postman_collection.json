@@ -190,7 +190,8 @@
 							"accept": true,
 							"connection": true,
 							"accept-encoding": true
-						}
+						},
+						"strictSSL": false
 					},
 					"request": {
 						"method": "POST",
@@ -203,7 +204,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"regCard\",\r\n    \"srcSystemId\": \"{{srcSystemId_1}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"regCard\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -348,7 +349,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"{{srcSystemId_1}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -407,7 +408,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_01\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -415,12 +416,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://autopay-test.rt.ru:8443/sdp",
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
 							"protocol": "https",
 							"host": [
-								"autopay-test",
-								"rt",
-								"ru"
+								"{{autopay_base_url}}"
 							],
 							"port": "8443",
 							"path": [
@@ -507,7 +506,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1153437\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1153554\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -579,6 +578,26 @@
 		{
 			"key": "reqCard_reqId",
 			"value": ""
+		},
+		{
+			"key": "accNum_2",
+			"value": "test_02",
+			"type": "string"
+		},
+		{
+			"key": "accNum_3",
+			"value": "test_03",
+			"type": "string"
+		},
+		{
+			"key": "regCard_orderId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "regCard_payAmount",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
