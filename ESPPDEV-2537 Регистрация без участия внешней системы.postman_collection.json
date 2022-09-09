@@ -506,7 +506,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1153554\r\n}",
+							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1153564\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -598,6 +598,10 @@
 			"key": "regCard_payAmount",
 			"value": "",
 			"type": "string"
+		},
+		{
+			"key": "esppCard_s1",
+			"value": ""
 		}
 	]
 }
