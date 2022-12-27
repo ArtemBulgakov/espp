@@ -1,0 +1,419 @@
+{
+	"info": {
+		"_postman_id": "2f278228-9d1c-4c95-a0a3-2899e03ed442",
+		"name": "ESPPDEV-3266 Добавить проверку поля \"payAmount\" во всех протоколах",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12346365"
+	},
+	"item": [
+		{
+			"name": "ПА-ЕСПП",
+			"item": [
+				{
+					"name": "checkPaymentParams",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reqStatus=0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"clientType=PERSON\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.clientType).to.eql(\"PERSON\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"content-type": true,
+							"user-agent": true
+						},
+						"followRedirects": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept-Charset",
+								"type": "text",
+								"value": "UTF-8"
+							},
+							{
+								"key": "Host",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"checkPaymentParams\",\r\n    \"svcTypeId\": \"{{pa_svcTypeId}}\",\r\n    \"svcNum\": \"{{pa_svcNum}}\",\r\n    \"payCurrId\": \"RUR\",\r\n    \"payAmount\": 112.212,\r\n    \"agentId\": \"1440\",\r\n    \"agentAccount\": \"OLDER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{espp_base_url}}:8443/uni-new",
+							"protocol": "https",
+							"host": [
+								"{{espp_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"uni-new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createPayment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reqStatus=0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"payStatus=2\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.payStatus).to.eql(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reqType=createPayment\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.reqType).to.eql(\"createPayment\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"srcPayId from request body\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.srcPayId).to.eql(pm.collectionVariables.get(\"srcPayId\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"esppPayId returned\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.esppPayId.have);\r",
+									"    pm.collectionVariables.set(\"esppPayId\", jsonData.esppPayId);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"reqTime returned\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.reqTime.have);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"check dupFlag\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    if(jsonData.dupFlag)\r",
+									"    {\r",
+									"        pm.expect.fail(\"dupFlag в запросе\")\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"srcPayId\", \"autotest_\" + getRandomInt(1000000000));\r",
+									"\r",
+									"pm.collectionVariables.set(\"currentTimeJSON\", getFormattedDateToJSON());\r",
+									"\r",
+									"\r",
+									"function getRandomInt(max) {\r",
+									"  return Math.floor(Math.random() * max);\r",
+									"}\r",
+									"\r",
+									"function getFormattedDateToJSON()\r",
+									"{\r",
+									"    d = new Date();\r",
+									"    tz = \"+05:00\";\r",
+									"    res = d.getFullYear().toString() + \"-\" + twodigits((d.getMonth() + 1).toString()) + \"-\" + twodigits(d.getDate().toString()) + \"T\" + twodigits(d.getHours().toString()) + \":\" + twodigits(d.getMinutes().toString()) + \":\" + twodigits(d.getSeconds().toString()) + tz; \r",
+									"    return res;\r",
+									"}\r",
+									"\r",
+									"function twodigits(par)\r",
+									"{\r",
+									"    if(par.length > 1)\r",
+									"    {\r",
+									"        return par;\r",
+									"    }\r",
+									"    else\r",
+									"    {\r",
+									"        return \"0\" + par;\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"content-type": true,
+							"user-agent": true
+						},
+						"followRedirects": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept-Charset",
+								"type": "text",
+								"value": "UTF-8"
+							},
+							{
+								"key": "Host",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"createPayment\",\r\n    \"svcTypeId\": \"{{pa_svcTypeId}}\",\r\n    \"svcNum\": \"{{pa_svcNum}}\",\r\n    \"payCurrId\": \"RUR\",\r\n    \"payAmount\": \"23\",\r\n    \"agentId\": \"1440\",\r\n    \"agentAccount\": \"OLDER\",\r\n    \"srcPayId\": \"{{srcPayId}}\",\r\n    \"payTime\": \"{{currentTimeJSON}}\",\r\n    \"reqTime\": \"{{currentTimeJSON}}\",\r\n    \"registerCheck\": \"1\",\r\n    \"payerContact\": \"test@rt.ru\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{espp_base_url}}:8443/uni-new",
+							"protocol": "https",
+							"host": [
+								"{{espp_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"uni-new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ЕСПП-ПРОЦЕССИНГ",
+			"item": []
+		},
+		{
+			"name": "ЕСПП-Автопоп",
+			"item": []
+		},
+		{
+			"name": "ЕСПП-Эквайринг",
+			"item": []
+		},
+		{
+			"name": "createPayment 5.1 Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set (\"randomNum\", _.random (10000000000,100000000000000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"disabledSystemHeaders": {
+					"accept-encoding": true,
+					"connection": true,
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"srcSystemId\": \"3213215354\",\r\n    \"srcPayId\": {{randomNum}},\r\n    \"currency\": \"RUB\",\r\n    \"srcTime\": \"2021-11-22T12:27:26.795+05:00\",\r\n    \"items\": [\r\n        {\r\n            \"svcTypeId\": \"0\",\r\n            \"svcNum\": \"199999999998\",\r\n            \"amount\": 111\r\n        }\r\n    ],\r\n    \"payMethod\": \"BankCard\",\r\n    \"regCard\": 1,\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUN\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"resultPage\": 1,\r\n    \"urlReturn\": \"/test/vpi2_test.jsp\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://paycard-test.rt.ru:8443/vpi2/createPayment",
+					"protocol": "https",
+					"host": [
+						"paycard-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"vpi2",
+						"createPayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "m2m createPayment 5.2 Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set (\"randomNum\", _.random (10000000000,100000000000000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"disabledSystemHeaders": {
+					"accept-encoding": true,
+					"connection": true,
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"srcSystemId\": \"111111111\",\r\n    \"srcPayId\": {{randomNum}},\r\n    \"currency\": \"RUB\",\r\n    \"srcTime\": \"2021-11-22T12:27:26.795+05:00\",\r\n    \"items\": [\r\n        {\r\n            \"svcTypeId\": \"0\",\r\n            \"svcNum\": \"199999999998\",\r\n            \"svcSubNum\": \"123\",\r\n            \"quantity\": 1,\r\n            \"amount\": 121\r\n        }\r\n    ],\r\n    \"payMethod\": \"BankCard\",\r\n    \"regCard\": 1,\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUN\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"comment\": \"test\",\r\n    \"clientEmail\": \"test@mail.ru\",\r\n    \"clientPhone\": \"1234567890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://paycard-test.rt.ru:8443/vpi2/createPayment",
+					"protocol": "https",
+					"host": [
+						"paycard-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"vpi2",
+						"createPayment"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "randomNum",
+			"value": ""
+		},
+		{
+			"key": "srcPayId",
+			"value": ""
+		},
+		{
+			"key": "currentTimeJSON",
+			"value": ""
+		},
+		{
+			"key": "esppPayId",
+			"value": ""
+		}
+	]
+}
