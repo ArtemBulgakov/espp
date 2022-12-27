@@ -1,0 +1,683 @@
+{
+	"info": {
+		"_postman_id": "fa27633f-657e-419f-b563-b52acd2dbad6",
+		"name": "ESPPDEV-3331 Передавать информацию об эквайере в процессинг при регистрации банковской карты",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12346365"
+	},
+	"item": [
+		{
+			"name": "Привязка карты (с ЮТ по старой схеме)",
+			"item": [
+				{
+					"name": "regCard s1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.collectionVariables.set(\"reqCard_reqId\", jsonData.reqId);\r",
+									"pm.collectionVariables.set(\"regCard_orderId\", jsonData.authPay.orderId);\r",
+									"pm.collectionVariables.set(\"regCard_payAmount\", jsonData.authPay.payAmount);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"regCard\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cardRegister s1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"reqStatus=0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"resigterStatus=1\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.registerStatus).to.eql(1);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true,
+							"accept-encoding": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"cardRegister\",\r\n    \"reqId\": \"{{reqCard_reqId}}\",\r\n    \"cardNumber\": \"4000000000002438\",\r\n    \"cardHolder\": \"IVAN IVANOV\",\r\n    \"cardExpMonth\": 1,\r\n    \"cardExpYear\": 2023,\r\n    \"cardCvc\": \"123\",\r\n    \"authPay\": {\r\n        \"orderId\": \"{{regCard_orderId}}\",\r\n        \"payAmount\": \"{{regCard_payAmount}}\",\r\n        \"payCurrId\": \"RUB\",\r\n        \"reqTime\": \"2022-02-22T22:22:23.000+05:00\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://testproc-rt.uniteller.ru/s/1/driver/sdbc/?merchantId={{ut_sdbk_merchantId}}",
+							"protocol": "https",
+							"host": [
+								"testproc-rt",
+								"uniteller",
+								"ru"
+							],
+							"path": [
+								"s",
+								"1",
+								"driver",
+								"sdbc",
+								""
+							],
+							"query": [
+								{
+									"key": "merchantId",
+									"value": "{{ut_sdbk_merchantId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCardsList s1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.collectionVariables.set(\"esppCard_s1\", jsonData.cards[0].esppCardId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Привязка карты по новой схеме",
+			"item": [
+				{
+					"name": "getCardsList",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true,
+							"accept-encoding": true,
+							"connection": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCard",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true,
+							"accept-encoding": true,
+							"connection": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1102192\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerCard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.collectionVariables.set(\"reqCard_reqId\", jsonData.reqId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    },\r\n    \"urlReturn\": \"https://test.ru\",\r\n    \"pageView\": \"test1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRegisterCardStatus",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1156399\r\n      \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Привязка карты по новой схеме с криптограммой",
+			"item": [
+				{
+					"name": "deleteCard",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true,
+							"accept-encoding": true,
+							"connection": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_01\"\r\n    },\r\n    \"esppCardId\": \"1103070\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCardsList",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true,
+							"accept-encoding": true,
+							"connection": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerCardCrypt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.collectionVariables.set(\"reqCard_reqId\", jsonData.reqId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"registerCardCrypt\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    },\r\n    \"cryptCardData\": \"999AABD2253423499\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRegisterCardStatus",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						},
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1153554\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{autopay_base_url}}:8443/sdp",
+							"protocol": "https",
+							"host": [
+								"{{autopay_base_url}}"
+							],
+							"port": "8443",
+							"path": [
+								"sdp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "srcSystemId",
+			"value": "4846",
+			"type": "string"
+		},
+		{
+			"key": "accTypeId",
+			"value": "TEST.ACCOUNT",
+			"type": "string"
+		},
+		{
+			"key": "accNum",
+			"value": "test_10",
+			"type": "string"
+		},
+		{
+			"key": "esppCardId",
+			"value": ""
+		},
+		{
+			"key": "reqId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "reqCard_reqId",
+			"value": ""
+		},
+		{
+			"key": "accNum_2",
+			"value": "test_02",
+			"type": "string"
+		},
+		{
+			"key": "accNum_3",
+			"value": "test_03",
+			"type": "string"
+		},
+		{
+			"key": "regCard_orderId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "regCard_payAmount",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "esppCard_s1",
+			"value": ""
+		}
+	]
+}
