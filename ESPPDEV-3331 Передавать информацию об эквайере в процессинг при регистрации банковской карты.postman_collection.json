@@ -1,0 +1,745 @@
+{
+	"info": {
+		"_postman_id": "fa27633f-657e-419f-b563-b52acd2dbad6",
+		"name": "ESPPDEV-3331 Передавать информацию об эквайере в процессинг при регистрации банковской карты",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12346365"
+	},
+	"item": [
+		{
+			"name": "getCardsList",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true,
+					"accept-encoding": true,
+					"connection": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"getCardsList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autopay-test.rt.ru:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"autopay-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCard",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true,
+					"accept-encoding": true,
+					"connection": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1102192\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autopay-test.rt.ru:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"autopay-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerCard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.collectionVariables.set(\"reqCard_reqId\", jsonData.reqId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"urlReturn\": \"https://test.ru\",\r\n    \"pageView\": \"test1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autopay-test.rt.ru:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"autopay-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerCardCrypt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.collectionVariables.set(\"reqCard_reqId\", jsonData.reqId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"registerCardCrypt\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"cryptCardData\": \"112233AASSDD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{autopay_base_url}}:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"{{autopay_base_url}}"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerCardCrypt-regStatus = -8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.collectionVariables.set(\"reqCard_reqId\", jsonData.reqId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"registerCardCrypt\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"cryptCardData\": \"112233AASSDD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{autopay_base_url}}:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"{{autopay_base_url}}"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerCard- regStatus = -8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.collectionVariables.set(\"reqCard_reqId\", jsonData.reqId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"urlReturn\": \"https://test.ru\",\r\n    \"pageView\": \"test1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{autopay_base_url}}:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"{{autopay_base_url}}"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRegisterCardStatus",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"reqId\": 1156399     \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autopay-test.rt.ru:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"autopay-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkRuleParams",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"reqStatus=0\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true,
+					"accept-encoding": true,
+					"connection": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"checkRuleParams\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"SDPPAID\"\r\n    },\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autopay-test.rt.ru:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"autopay-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRulesList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"reqStatus=0\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"ruleList is not null\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    jsonData.rules[0].ruleId == environment.ruleId;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"ruleId = \" + environment.ruleId, function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    jsonData.rules[0].ruleId == environment.ruleId;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"esppCardId = \" + environment.esppCardId, function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    jsonData.rules[0].esppCardId == environment.esppCardId;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"ap_svcNum = \" + environment.ap_svcNum, function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    jsonData.rules[0].ap_svcNum == environment.ap_svcNum;\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true,
+					"accept-encoding": true,
+					"connection": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"getRuleList\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autopay-test.rt.ru:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"autopay-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createRule",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"ruleId\", jsonData.ruleId);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"reqStatus=0\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Правило создано успешно.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.reqNote).to.eql(\"Правило создано успешно.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"ruleId is not null\", function () {\r",
+							"   pm.response.to.have.jsonBody(\"ruleId\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"ruleId = \" + environment.ruleId, function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    jsonData.ruleId == environment.ruleId;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true,
+					"accept-encoding": true,
+					"connection": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"createRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"reqTime\": \"2017-10-23T12:08:15+00:00\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    },\r\n    \"esppCardId\": \"1095591\",\r\n    \"svcTypeId\": \"0\",\r\n    \"svcNum\": \"199999999601\",\r\n    \"ruleInfo\": {\r\n        \"ruleType\": \"MOBILE\",\r\n        \"rate\": \"15000\",\r\n        \"limit\": \"15000\",\r\n        \"level\": \"10000\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autopay-test.rt.ru:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"autopay-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRule",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"reqStatus=0\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.reqStatus).to.eql(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Запрос выполнен успешно.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.reqNote).to.eql(\"Запрос выполнен успешно.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true,
+					"accept-encoding": true,
+					"connection": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqType\": \"deleteRule\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"ruleId\": \"1082594\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_10\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autopay-test.rt.ru:8443/sdp",
+					"protocol": "https",
+					"host": [
+						"autopay-test",
+						"rt",
+						"ru"
+					],
+					"port": "8443",
+					"path": [
+						"sdp"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "srcSystemId",
+			"value": "4846",
+			"type": "string"
+		},
+		{
+			"key": "accTypeId",
+			"value": "TEST.ACCOUNT",
+			"type": "string"
+		},
+		{
+			"key": "accNum",
+			"value": "test_10",
+			"type": "string"
+		},
+		{
+			"key": "esppCardId",
+			"value": ""
+		},
+		{
+			"key": "reqId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "reqCard_reqId",
+			"value": ""
+		},
+		{
+			"key": "accNum_2",
+			"value": "test_02",
+			"type": "string"
+		},
+		{
+			"key": "accNum_3",
+			"value": "test_03",
+			"type": "string"
+		},
+		{
+			"key": "regCard_orderId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "regCard_payAmount",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "esppCard_s1",
+			"value": ""
+		}
+	]
+}
