@@ -397,7 +397,11 @@
 						],
 						"body": {
 							"mode": "raw",
+<<<<<<< HEAD
+							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_01\"\r\n    },\r\n    \"esppCardId\": \"1104550\"\r\n}",
+=======
 							"raw": "{\r\n    \"reqType\": \"deleteCard\",\r\n    \"srcSystemId\": \"4846\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"TEST.ACCOUNT\",\r\n        \"accNum\": \"test_01\"\r\n    },\r\n    \"esppCardId\": \"1103070\"\r\n}",
+>>>>>>> e27f0a33549e92c9a6bd22a0a061a6e576375eee
 							"options": {
 								"raw": {
 									"language": "json"
@@ -496,7 +500,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    },\r\n    \"urlReturn\": \"https://test.ru\"\r\n}",
+							"raw": "{\r\n    \"reqType\": \"registerCard\",\r\n    \"srcSystemId\": \"{{srcSystemId}}\",\r\n    \"accountInfo\": {\r\n        \"accTypeId\": \"{{accTypeId}}\",\r\n        \"accNum\": \"{{accNum}}\"\r\n    },\r\n    \"urlReturn\": \"https://test.ru\",\r\n    \"pageView\": \"test1\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -539,7 +543,11 @@
 						],
 						"body": {
 							"mode": "raw",
+<<<<<<< HEAD
+							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1156399\r\n      \r\n}",
+=======
 							"raw": "{\r\n    \"reqType\": \"getRegisterCardStatus\",\t\r\n        \"srcSystemId\": \"{{srcSystemId}}\",\r\n        \"accountInfo\": {\r\n            \"accTypeId\": \"{{accTypeId}}\",\r\n            \"accNum\": \"{{accNum}}\"\r\n            },\r\n\t  \"reqId\": 1153917\r\n}",
+>>>>>>> e27f0a33549e92c9a6bd22a0a061a6e576375eee
 							"options": {
 								"raw": {
 									"language": "json"
